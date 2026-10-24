@@ -1,0 +1,4 @@
+name: baseline
+mode: mono            # pySLAM unchanged, monocular
+core: cpp             # cpp | python  (Part 1 compares both)
+settings: {}          # no trust parameter

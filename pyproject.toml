@@ -1,0 +1,18 @@
+[project]
+name = "comp0227-cw1"
+version = "0.1.0"
+description = "COMP0227 CW1: monocular depth in monocular SLAM (evaluation scripts; pySLAM lives in third_party/)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "pyyaml",
+    "opencv-python-headless",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+

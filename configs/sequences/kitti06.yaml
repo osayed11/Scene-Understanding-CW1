@@ -1,0 +1,6 @@
+name: kitti06
+settings_file: settings/KITTI04-12.yaml        # relative to third_party/pyslam
+images: data/kitti06/image_2                   # TODO (Part 1): extracted from data/videos/kitti06 or KITTI odometry download
+groundtruth: data/kitti06/groundtruth_tum.txt  # TODO: convert KITTI poses (06.txt) to TUM format with timestamps
+depth_gt: null                                 # no depth ground truth
+depth_pred: depth_maps/kitti06

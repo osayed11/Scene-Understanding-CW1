@@ -1,0 +1,43 @@
+# pySLAM itself, sequences and network weights are NOT part of the submission
+third_party/pyslam/
+data/*
+!data/.gitkeep
+depth_maps/*
+!depth_maps/.gitkeep
+weights/
+
+# large run artefacts (keep results.csv and TUM trajectories, which ARE submitted)
+results/logs/*
+!results/logs/.gitkeep
+results/maps/
+*.npz
+*.npy
+*.png
+*.mp4
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pixi/
+*.egg-info/
+
+# latex
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.log
+report/*.out
+report/*.synctex.gz
+report/*.fdb_latexmk
+report/*.fls
+
+# os / editors
+.DS_Store
+.vscode/
+.idea/
+
+# submission archive
+submission/
+.pytest_cache/
+# pyslam.diff and PYSLAM_TAG at the root ARE tracked (submission items)

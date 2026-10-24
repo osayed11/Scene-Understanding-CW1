@@ -1,0 +1,7 @@
+name: method_b
+mode: pseudo_rgbd
+depth_source: depth_pred
+# TODO (Part 3): describe where the depth enters, whether it is a starting point or a constraint,
+# which source wins when a point has both depths, and whether the map is in metres.
+settings:
+  depth_trust: [0.1, 0.5, 1.0]   # sweep values for the trust parameter

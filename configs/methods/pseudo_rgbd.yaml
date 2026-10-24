@@ -1,0 +1,4 @@
+name: pseudo_rgbd
+mode: rgbd            # predicted depth fed in as if from a depth camera; no pySLAM changes (Part 3 reference)
+depth_source: depth_pred
+settings: {}

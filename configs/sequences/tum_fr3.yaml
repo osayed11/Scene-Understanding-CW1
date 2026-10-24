@@ -1,0 +1,6 @@
+name: tum_fr3
+settings_file: settings/TUM3.yaml
+images: data/rgbd_dataset_freiburg3_long_office_household/rgb
+groundtruth: data/rgbd_dataset_freiburg3_long_office_household/groundtruth.txt
+depth_gt: data/rgbd_dataset_freiburg3_long_office_household/depth
+depth_pred: depth_maps/tum_fr3

@@ -1,0 +1,6 @@
+name: replica_room0
+settings_file: settings/REPLICA.yaml
+images: data/replica/room0/results                # TODO (Part 1): check layout and GT (traj.txt is 4x4 per line)
+groundtruth: data/replica/room0/groundtruth_tum.txt
+depth_gt: data/replica/room0/results              # depth*.png, exact
+depth_pred: depth_maps/replica_room0

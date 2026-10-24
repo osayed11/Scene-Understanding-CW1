@@ -1,0 +1,4 @@
+name: rgbd_gt
+mode: rgbd            # sequence's own depth images: the upper-bound reference (TUM, Replica only)
+depth_source: depth_gt
+settings: {}
