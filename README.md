@@ -39,6 +39,7 @@ make test
 
 Each run appends one row to `results/results.csv` via `scripts/measure_run.py` and saves its trajectory to
 `results/trajectories/<run_id>.txt` (TUM format); pySLAM's own log, config and plots are in `results/logs/<run_id>/`.
+Runs must not be launched in parallel: pySLAM writes its logs to one folder, timings would be shared, and `measure_run.py` read-modify-writes `results.csv`.
 Every number can be recomputed with:
 
 ```bash

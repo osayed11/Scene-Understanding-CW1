@@ -6,7 +6,10 @@ What is computed (state this exactly in the report):
   scale       : the scale fitted by the Sim(3) alignment
   RPE_trans   : RMSE of relative translation error over a fixed interval `delta` (in frames)
   RPE_rot     : RMSE of relative rotation error (degrees) over the same interval
-  tracked     : fraction of the sequence's frames for which the run produced a pose (n_est / n_frames)
+  tracked     : fraction of the sequence's frames for which the run produced a pose (n_est / n_frames);
+                n_assoc of those have a ground-truth pose within max_dt and enter ATE/RPE
+  lost_spans  : gaps of more than 3 frame intervals with no pose; the frames before monocular
+                initialisation count as such a gap at the start
   lost_spans  : list of (start_t, end_t) gaps where tracking was lost
   time_per_frame : wall-clock seconds of the run / n_frames, taken from the run log
 """
@@ -29,6 +32,7 @@ class RunMetrics:
     rpe_rot_deg: float
     tracked: float
     n_est: int
+    n_assoc: int
     n_gt: int
     n_frames: int
     lost_spans: List[Tuple[float, float]] = field(default_factory=list)
@@ -48,8 +52,11 @@ def ate(est_xyz: np.ndarray, gt_xyz: np.ndarray, with_scale: bool):
     return float(np.sqrt(np.mean(err ** 2))), float(s)
 
 
-def rpe(est_T: np.ndarray, gt_T: np.ndarray, delta: int, scale: float = 1.0):
-    """Relative pose error over `delta` frames. est is scaled by `scale` before comparison."""
+def rpe(est_T: np.ndarray, gt_T: np.ndarray, delta: int, scale: float = 1.0,
+        t: np.ndarray | None = None, frame_dt: float | None = None):
+    """Relative pose error over `delta` frames. est is scaled by `scale` before comparison.
+    With timestamps `t` and the nominal frame interval, pairs that span a tracking gap (more than 1.5x the
+    nominal delta * frame_dt) are skipped, so the interval really is fixed."""
     est_T = est_T.copy()
     est_T[:, :3, 3] *= scale
     n = len(est_T) - delta
@@ -57,12 +64,16 @@ def rpe(est_T: np.ndarray, gt_T: np.ndarray, delta: int, scale: float = 1.0):
         return float("nan"), float("nan")
     te, re = [], []
     for i in range(n):
+        if t is not None and frame_dt and (t[i + delta] - t[i]) > 1.5 * delta * frame_dt:
+            continue
         d_est = np.linalg.inv(est_T[i]) @ est_T[i + delta]
         d_gt = np.linalg.inv(gt_T[i]) @ gt_T[i + delta]
         e = np.linalg.inv(d_gt) @ d_est
         te.append(np.linalg.norm(e[:3, 3]))
         c = np.clip((np.trace(e[:3, :3]) - 1) / 2, -1, 1)
         re.append(np.degrees(np.arccos(c)))
+    if not te:
+        return float("nan"), float("nan")
     return float(np.sqrt(np.mean(np.square(te)))), float(np.sqrt(np.mean(np.square(re))))
 
 
@@ -90,11 +101,12 @@ def evaluate(est: np.ndarray, gt: np.ndarray, n_frames: int | None = None, rpe_d
         raise ValueError(f"only {len(e)} associated poses; check timestamps / max_dt")
     ate_ns, _ = ate(e[:, 1:4], g[:, 1:4], with_scale=False)
     ate_s, s = ate(e[:, 1:4], g[:, 1:4], with_scale=True)
-    rpe_t, rpe_r = rpe(to_matrices(e), to_matrices(g), rpe_delta, scale=s)
+    frame_dt = (gt[-1, 0] - gt[0, 0]) / max(n_frames - 1, 1)
+    rpe_t, rpe_r = rpe(to_matrices(e), to_matrices(g), rpe_delta, scale=s, t=e[:, 0], frame_dt=frame_dt)
     return RunMetrics(
         ate_noscale=ate_ns, ate_scale=ate_s, scale=s,
         rpe_trans=rpe_t, rpe_rot_deg=rpe_r,
-        tracked=len(e) / n_frames, n_est=len(e), n_gt=len(gt), n_frames=n_frames,
+        tracked=len(est) / n_frames, n_est=len(est), n_assoc=len(e), n_gt=len(gt), n_frames=n_frames,
         lost_spans=lost_spans(e[:, 0], gt[:, 0], n_frames),
         time_per_frame=time_per_frame,
     )

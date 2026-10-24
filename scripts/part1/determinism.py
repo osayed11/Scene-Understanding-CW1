@@ -49,11 +49,12 @@ def main():
         worst = 0.0
         for i in range(len(trajs)):
             for j in range(i + 1, len(trajs)):
+                if len(trajs[i]) != len(trajs[j]):
+                    return float("inf")  # different sets of tracked frames: not the same trajectory at all
                 x, y = associate(trajs[i], trajs[j], max_dt=1e-6)
                 if len(x) == 0:
                     return float("inf")
                 worst = max(worst, float(np.abs(x[:, 1:4] - y[:, 1:4]).max()))
-                worst = max(worst, abs(len(trajs[i]) - len(trajs[j])) and float("inf"))
         return worst
 
     summary["max_pairwise_position_diff"] = [

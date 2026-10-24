@@ -24,10 +24,18 @@ def run_id(sequence: str, method: str, settings: dict, run: int) -> str:
     return f"{sequence}__{method}__{s}__run{run:02d}"
 
 
-def count_frames(sequence: dict) -> int:
-    """Number of frames of the sequence: the denominator of the tracked share and of time per frame
-    (not the number of ground-truth poses: TUM's ground truth is at 100 Hz, the camera at 30 Hz)."""
+def count_frames(sequence: dict, run_dir: Path | None = None) -> int:
+    """Number of frames the run processed: the denominator of the tracked share and of time per frame
+    (not the number of ground-truth poses: TUM's ground truth is at 100 Hz, the camera at 30 Hz).
+    Taken from pySLAM's own other_metrics_info.txt (num_total_frames) when the run has one, since the
+    frame list depends on the mode (TUM RGB-D reads associations.txt, 2488 frames; mono rgb.txt, 2585);
+    otherwise counted from the sequence's frame list."""
     import glob
+    import re
+    if run_dir is not None and (run_dir / "other_metrics_info.txt").exists():
+        m = re.search(r"num_total_frames:\s*(\d+)", (run_dir / "other_metrics_info.txt").read_text())
+        if m:
+            return int(m.group(1))
     if "frame_list" in sequence:
         with open(ROOT / sequence["frame_list"]) as f:
             return sum(1 for l in f if l.strip() and not l.startswith("#"))

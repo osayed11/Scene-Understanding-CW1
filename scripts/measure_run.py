@@ -28,6 +28,15 @@ def tracking_time_per_frame(tracking_log: Path) -> float:
     return sum(t) / len(t) if t else float("nan")
 
 
+def pyslam_stat(log_dir: Path, key: str) -> float:
+    """A value from pySLAM's own other_metrics_info.txt (cross-check of our counts)."""
+    f = log_dir / "other_metrics_info.txt"
+    if not f.exists():
+        return float("nan")
+    m = re.search(rf"{key}:\s*([\d.]+)", f.read_text())
+    return float(m.group(1)) if m else float("nan")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sequence", required=True)
@@ -45,15 +54,16 @@ def main():
     seq = load_sequence(a.sequence)
     est = load_tum(a.traj or RESULTS / "trajectories" / f"{rid}.txt")
     gt = load_tum(ROOT / seq["groundtruth"])
-    n_frames = count_frames(seq)
     log_dir = RESULTS / "logs" / rid
+    n_frames = count_frames(seq, log_dir)
     tpf = tracking_time_per_frame(log_dir / "pyslam_logs" / "tracking.log")
     m = evaluate(est, gt, n_frames=n_frames, rpe_delta=a.rpe_delta, max_dt=a.max_dt, time_per_frame=tpf)
 
     row = {"run_id": rid, "sequence": a.sequence, "method": a.method,
            "settings": ";".join(f"{k}={v}" for k, v in sorted(settings.items())), "run": a.run,
            "rpe_delta": a.rpe_delta, **m.as_row(),
-           "wall_per_frame": wall_per_frame(log_dir / "stdout.log", n_frames)}
+           "wall_per_frame": wall_per_frame(log_dir / "stdout.log", n_frames),
+           "pyslam_tracked_frames": pyslam_stat(log_dir, "num_tracked_frames")}
     csv = Path(a.csv)
     df = pd.read_csv(csv) if csv.exists() else pd.DataFrame()
     df = df[df.get("run_id", pd.Series(dtype=str)) != rid] if len(df) else df
