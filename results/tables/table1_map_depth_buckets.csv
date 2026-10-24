@@ -1,0 +1,12 @@
+run_id,sequence,bucket_by,bucket,n_obs,abs_rel_median,within_10pct
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(0, 1]",589,0.1306767313829642,0.4091680814940577
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(1, 2]",1893,0.07890219881537694,0.6138404648705758
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(2, 5]",6504,0.047599011144622894,0.7535362853628537
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(5, 10]",8509,0.030727671661456058,0.8624985309672112
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(10, 20]",13587,0.026235182763231394,0.9009347170089056
+tum_fr3__baseline__speed=1__run01,tum_fr3,parallax_deg,"(20, 180]",48148,0.022165588854004895,0.9138905042784747
+tum_fr3__baseline__speed=1__run01,tum_fr3,distance_m,"(0, 1]",19714,0.021166097342217655,0.9146799228974333
+tum_fr3__baseline__speed=1__run01,tum_fr3,distance_m,"(1, 2]",41604,0.024312516361820108,0.8864051533506394
+tum_fr3__baseline__speed=1__run01,tum_fr3,distance_m,"(2, 3]",14476,0.03354556549097143,0.8565902182923459
+tum_fr3__baseline__speed=1__run01,tum_fr3,distance_m,"(3, 5]",1954,0.03330100528420683,0.7661207778915046
+tum_fr3__baseline__speed=1__run01,tum_fr3,distance_m,"(5, 10]",1482,0.05096890463288993,0.7280701754385965

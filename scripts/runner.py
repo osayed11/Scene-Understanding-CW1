@@ -41,7 +41,8 @@ def _write_run_config(sequence: dict, method: dict, out_dir: Path) -> Path:
 
 
 def build_command(sequence: dict, method: dict, settings: dict, cfg_path: Path) -> list[str]:
-    cmd = ["pixi", "run", "slam", "-c", str(cfg_path), "--headless", "--no_output_date"]
+    cmd = ["pixi", "run", "slam", "-c", str(cfg_path), "--headless", "--no_output_date",
+           "--save-map", str(cfg_path.parent / "map")]  # our pySLAM patch: the final map, for the point analyses
     if "speed" not in settings:  # playback speed: 1 = the camera's frame rate (the fair condition), 0 = as fast as possible
         cmd += ["--speed", str(method.get("speed", 1))]
     name = sequence["name"]
@@ -86,4 +87,8 @@ def run_pyslam(sequence: dict, method: dict, settings: dict, run: int, dry_run: 
     logs_dir.mkdir(exist_ok=True)
     for f in (PYSLAM / "logs").glob("*.log"):
         shutil.copy(f, logs_dir / f.name)
+    # compact the saved map (~300 MB json) into map_points.npz and drop the heavy files
+    if (out_dir / "map" / "map.json").exists():
+        from extract_map import extract
+        extract(out_dir / "map")
     return traj_out

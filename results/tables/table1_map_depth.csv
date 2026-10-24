@@ -1,0 +1,2 @@
+run_id,sequence,n_obs,scale_fit,abs_rel_median,abs_rel_mean,within_10pct,within_25pct,signed_rel_median
+tum_fr3__baseline__speed=1__run01,tum_fr3,79230,2.65260109627581,0.025282212061999938,0.05629186146581386,0.8820648744162565,0.9689511548655813,7.131355321990076e-14

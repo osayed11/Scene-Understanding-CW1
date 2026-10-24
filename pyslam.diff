@@ -1,0 +1,29 @@
+diff --git a/main_slam.py b/main_slam.py
+index 18e6e05b..24d14a36 100755
+--- a/main_slam.py
++++ b/main_slam.py
+@@ -237,6 +237,13 @@ if __name__ == "__main__":
+         f"(default: {Parameters.kPlotSlidingWindowNumFrames}; 0: the whole run). In a plot window, "
+         "'+' zooms in (fewer frames), '-' zooms out and '0' shows the whole run.",
+     )
++    parser.add_argument(
++        "--save-map",
++        metavar="DIR",
++        default=None,
++        help="COMP0227 CW1: save the final system state (map.json with the keyframes, the map points and their "
++        "observations) into DIR at the end of the run, as the GUI's save button does; works with --headless",
++    )
+     parser.add_argument(
+         "--verbose",
+         action="store_true",
+@@ -924,6 +931,10 @@ if __name__ == "__main__":
+         flush=True,
+     )
+ 
++    # COMP0227 CW1: save the final map for the offline analysis of its points (Parts 1, 2 and 4)
++    if args.save_map:
++        slam.save_system_state(args.save_map)
++
+     # Stop SLAM (which stops all processes and shuts down their managers); the viewers are closed above
+     slam.quit()
+ 

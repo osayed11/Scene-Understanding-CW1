@@ -30,7 +30,8 @@ make test
 
 | Report item | Command | Output |
 |---|---|---|
-| Table 1: baseline, determinism (and C++ vs Python core: methods baseline / baseline_py), RGB-D reference | `make table1` | `results/tables/table1_*.csv` |
+| Table 1: baseline, determinism (and C++ vs Python core: methods baseline / baseline_py), RGB-D reference | `make table1` | `results/tables/table1_summary.csv` |
+| Table 1b: agreement of the map points with the sequence's depth (TUM, Replica), by parallax and distance | `python scripts/part1/map_depth_agreement.py` | `results/tables/table1_map_depth*.csv` |
 | Depth maps for every frame (reused by all later parts) | `make depth_maps` | `depth_maps/<seq>/` |
 | Table 2: depth quality, temporal consistency, keypoint depth + uncertainty + scale | `make table2` | `results/tables/table2_*.csv` |
 | Table 3: pseudo RGB-D, method A, method B, trust sweeps | `make table3` | `results/tables/table3_*.csv` |
@@ -38,7 +39,9 @@ make test
 | Submission zip (code, results, report) | `make submission` | `submission/` |
 
 Each run appends one row to `results/results.csv` via `scripts/measure_run.py` and saves its trajectory to
-`results/trajectories/<run_id>.txt` (TUM format); pySLAM's own log, config and plots are in `results/logs/<run_id>/`.
+`results/trajectories/<run_id>.txt` (TUM format); pySLAM's own log, config and plots are in `results/logs/<run_id>/`, and its final map,
+compacted by `scripts/extract_map.py` to `results/logs/<run_id>/map/map_points.npz` (keyframes, points, observations, per-keyframe depth, parallax).
+Saving the map in a headless run is our one change to pySLAM so far (`--save-map DIR` in main_slam.py, see `pyslam.diff`).
 Runs must not be launched in parallel: pySLAM writes its logs to one folder, timings would be shared, and `measure_run.py` read-modify-writes `results.csv`.
 Every number can be recomputed with:
 
