@@ -6,3 +6,4 @@ groundtruth: data/replica/room0/groundtruth_tum.txt   # made by scripts/setup/pr
 depth_gt: data/replica/room0/results        # depthXXXXXX.png, exact
 depth_pred: depth_maps/replica_room0
 frame_glob: data/replica/room0/results/frame*.jpg
+depth_factor: 6553.5     # = DepthMapFactor in settings/REPLICA.yaml; cap 10.0 m

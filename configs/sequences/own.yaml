@@ -5,3 +5,4 @@ groundtruth: data/own/reference_tum.txt           # reference from COLMAP / VGGT
 depth_gt: null                                    # or data/own/depth if recorded with the D455
 depth_pred: depth_maps/own
 frame_list: data/own/rgb.txt
+depth_factor: 1000       # TODO: cap 65 m; set DepthMapFactor to the same value in settings/OWN.yaml

@@ -6,3 +6,4 @@ groundtruth: data/tum/rgbd_dataset_freiburg3_long_office_household/groundtruth.t
 depth_gt: data/tum/rgbd_dataset_freiburg3_long_office_household/depth
 depth_pred: depth_maps/tum_fr3
 frame_list: data/tum/rgbd_dataset_freiburg3_long_office_household/rgb.txt   # one line per frame (comments skipped)
+depth_factor: 5000       # = DepthMapFactor in settings/TUM3.yaml; cap 13.1 m

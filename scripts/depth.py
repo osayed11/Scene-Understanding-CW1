@@ -1,26 +1,52 @@
 """Depth-map IO shared by Parts 2-4.
 
-Convention: depth maps are saved as 16-bit PNG in millimetres (TUM convention, depth_factor=5000
-means 1 unit = 1/5000 m) so pySLAM can read them as the depth images of an RGB-D sequence.
+Two stores for every predicted depth map:
+  <name>.npy  float32 metres, lossless: the canonical prediction, used for all the scoring of Part 2
+  <name>.png  16-bit, metres * factor: what pySLAM reads as the depth image of an RGB-D sequence
+The PNG factor must (a) match DepthMapFactor in the pySLAM settings file of the sequence and (b) cover the
+depth range: the largest storable depth is 65535 / factor. 5000 (TUM) caps at 13.1 m, fine indoors, useless
+on KITTI, so the factor is per sequence (configs/sequences/*.yaml: depth_factor). Writing a depth above the
+cap raises, rather than silently flattening distant scene to the cap.
 """
 from __future__ import annotations
 
-import numpy as np
+from pathlib import Path
+
 import cv2
+import numpy as np
 
-DEPTH_FACTOR = 5000.0  # TUM convention; must match the DepthMapFactor in the pySLAM settings file
-
-
-def save_depth_png(path, depth_m: np.ndarray) -> None:
-    d = np.clip(depth_m * DEPTH_FACTOR, 0, 65535).astype(np.uint16)
-    cv2.imwrite(str(path), d)
+MAX_U16 = 65535
 
 
-def load_depth_png(path) -> np.ndarray:
+def max_depth(factor: float) -> float:
+    return MAX_U16 / factor
+
+
+def save_depth(path, depth_m: np.ndarray, factor: float) -> None:
+    """Save <path>.npy (float32 metres) and <path>.png (uint16 = metres * factor). `path` has no extension."""
+    path = Path(path)
+    depth_m = np.asarray(depth_m, dtype=np.float32)
+    np.save(path.with_suffix(".npy"), depth_m)
+    finite = np.isfinite(depth_m)
+    if finite.any() and depth_m[finite].max() > max_depth(factor):
+        raise ValueError(f"{path}: depth {depth_m[finite].max():.1f} m exceeds the 16-bit cap {max_depth(factor):.1f} m "
+                         f"for factor {factor}; use a smaller factor for this sequence")
+    d = np.where(finite, depth_m * factor, 0).round().astype(np.uint16)  # 0 = no depth, as TUM
+    cv2.imwrite(str(path.with_suffix(".png")), d)
+
+
+def load_depth_npy(path) -> np.ndarray:
+    return np.load(path)
+
+
+def load_depth_png(path, factor: float) -> np.ndarray:
+    """16-bit PNG -> float32 metres; 0 (no depth) -> nan."""
     d = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
     if d is None:
         raise FileNotFoundError(path)
-    return d.astype(np.float32) / DEPTH_FACTOR
+    out = d.astype(np.float32) / factor
+    out[d == 0] = np.nan
+    return out
 
 
 def depth_at_keypoints(depth_m: np.ndarray, kps: np.ndarray, radius: int = 0):
