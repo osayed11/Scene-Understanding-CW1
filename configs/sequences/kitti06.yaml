@@ -1,6 +1,10 @@
 name: kitti06
-settings_file: settings/KITTI04-12.yaml        # relative to third_party/pyslam
-images: data/kitti06/image_2                   # TODO (Part 1): extracted from data/videos/kitti06 or KITTI odometry download
-groundtruth: data/kitti06/groundtruth_tum.txt  # TODO: convert KITTI poses (06.txt) to TUM format with timestamps
-depth_gt: null                                 # no depth ground truth
+settings_file: settings/KITTI04-12.yaml   # relative to third_party/pyslam
+video: data/kitti06/video_color.mp4       # colour video shipped with pySLAM (data/videos/kitti06); the brief names this as the source
+images: data/kitti06/image_2              # frames extracted from the video (000000.png ...), for the depth network in Part 2
+timestamps: data/kitti06/times.txt
+groundtruth: data/kitti06/groundtruth.txt # already TUM-style: t tx ty tz qx qy qz qw (+ extra column)
+poses_kitti: data/kitti06/06.txt          # original KITTI 3x4 poses
+depth_gt: null                            # no depth ground truth
 depth_pred: depth_maps/kitti06
+frame_list: data/kitti06/times.txt            # one line per frame

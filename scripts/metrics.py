@@ -6,9 +6,9 @@ What is computed (state this exactly in the report):
   scale       : the scale fitted by the Sim(3) alignment
   RPE_trans   : RMSE of relative translation error over a fixed interval `delta` (in frames)
   RPE_rot     : RMSE of relative rotation error (degrees) over the same interval
-  tracked     : fraction of ground-truth-covered frames for which the run produced a pose
+  tracked     : fraction of the sequence's frames for which the run produced a pose (n_est / n_frames)
   lost_spans  : list of (start_t, end_t) gaps where tracking was lost
-  time_per_frame : wall-clock seconds per frame, taken from the run log
+  time_per_frame : wall-clock seconds of the run / n_frames, taken from the run log
 """
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ class RunMetrics:
     tracked: float
     n_est: int
     n_gt: int
+    n_frames: int
     lost_spans: List[Tuple[float, float]] = field(default_factory=list)
     time_per_frame: float = float("nan")
 
@@ -41,7 +42,8 @@ class RunMetrics:
 
 def ate(est_xyz: np.ndarray, gt_xyz: np.ndarray, with_scale: bool):
     s, Rm, t = umeyama(est_xyz, gt_xyz, with_scale)
-    aligned = (s * (Rm @ est_xyz.T)).T + t
+    with np.errstate(all="ignore"):  # spurious OpenBLAS warning, see trajectory.umeyama
+        aligned = (s * (Rm @ est_xyz.T)).T + t
     err = np.linalg.norm(aligned - gt_xyz, axis=1)
     return float(np.sqrt(np.mean(err ** 2))), float(s)
 
@@ -64,11 +66,11 @@ def rpe(est_T: np.ndarray, gt_T: np.ndarray, delta: int, scale: float = 1.0):
     return float(np.sqrt(np.mean(np.square(te)))), float(np.sqrt(np.mean(np.square(re))))
 
 
-def lost_spans(est_t: np.ndarray, gt_t: np.ndarray, gap_factor: float = 3.0):
-    """Gaps in the estimate longer than gap_factor * median GT frame interval."""
+def lost_spans(est_t: np.ndarray, gt_t: np.ndarray, n_frames: int, gap_factor: float = 3.0):
+    """Gaps in the estimate longer than gap_factor * the frame interval (sequence duration / n_frames)."""
     if len(est_t) < 2:
         return [(float(gt_t[0]), float(gt_t[-1]))]
-    dt = np.median(np.diff(gt_t))
+    dt = (gt_t[-1] - gt_t[0]) / max(n_frames - 1, 1)
     gaps = np.diff(est_t)
     spans = [(float(est_t[i]), float(est_t[i + 1])) for i in np.where(gaps > gap_factor * dt)[0]]
     if est_t[0] - gt_t[0] > gap_factor * dt:
@@ -78,9 +80,11 @@ def lost_spans(est_t: np.ndarray, gt_t: np.ndarray, gap_factor: float = 3.0):
     return spans
 
 
-def evaluate(est: np.ndarray, gt: np.ndarray, rpe_delta: int = 10, max_dt: float = 0.02,
-             time_per_frame: float = float("nan")) -> RunMetrics:
-    """Score one run. `est`, `gt` are (N, 8) TUM arrays."""
+def evaluate(est: np.ndarray, gt: np.ndarray, n_frames: int | None = None, rpe_delta: int = 10,
+             max_dt: float = 0.02, time_per_frame: float = float("nan")) -> RunMetrics:
+    """Score one run. `est`, `gt` are (N, 8) TUM arrays; n_frames is the number of frames of the sequence
+    (defaults to the number of GT poses, right only when GT is one pose per frame)."""
+    n_frames = n_frames or len(gt)
     e, g = associate(est, gt, max_dt=max_dt)
     if len(e) < 3:
         raise ValueError(f"only {len(e)} associated poses; check timestamps / max_dt")
@@ -90,7 +94,7 @@ def evaluate(est: np.ndarray, gt: np.ndarray, rpe_delta: int = 10, max_dt: float
     return RunMetrics(
         ate_noscale=ate_ns, ate_scale=ate_s, scale=s,
         rpe_trans=rpe_t, rpe_rot_deg=rpe_r,
-        tracked=len(e) / len(gt), n_est=len(e), n_gt=len(gt),
-        lost_spans=lost_spans(e[:, 0], gt[:, 0]),
+        tracked=len(e) / n_frames, n_est=len(e), n_gt=len(gt), n_frames=n_frames,
+        lost_spans=lost_spans(e[:, 0], gt[:, 0], n_frames),
         time_per_frame=time_per_frame,
     )

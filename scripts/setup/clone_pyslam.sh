@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# Clone the tagged course version of pySLAM into third_party/pyslam and install both pixi environments.
+# Clone the course version of pySLAM (sjulier fork, tag comp0227-2026-lab03.1) into third_party/pyslam and build it.
 set -euo pipefail
-TAG="${PYSLAM_TAG:?set PYSLAM_TAG to the tag named in the coursework release}"
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-git clone https://github.com/luigifreda/pyslam.git "$ROOT/third_party/pyslam"
+COMMIT="$(cat "$ROOT/PYSLAM_TAG")"
+if [ ! -d "$ROOT/third_party/pyslam" ]; then
+  git clone https://github.com/sjulier/pyslam.git "$ROOT/third_party/pyslam"
+fi
 cd "$ROOT/third_party/pyslam"
-git checkout "$TAG"
-git submodule update --init --recursive
-echo "$TAG" > "$ROOT/PYSLAM_TAG"
-pixi install                       # default environment (SLAM runs)
-pixi run -e depth models-depth     # depth environment + ~7 GB of weights
+git checkout "$COMMIT"
+pixi run build                     # environment + native modules + ORB vocabulary (15-60 min)
+pixi run check                     # native modules load, optimiser tests pass
+pixi run -e depth models-depth     # depth environment + ~7 GB of weights (Part 2)

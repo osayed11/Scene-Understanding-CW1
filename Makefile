@@ -13,9 +13,8 @@ test:
 
 # ---- Part 1 (Table 1): baseline, cores, determinism, RGB-D reference ----
 table1:
-	for s in $(SEQS); do $(PY) scripts/run_config.py --sequence $$s --method baseline --runs $(RUNS); done
+	for s in $(SEQS); do for m in baseline baseline_py; do $(PY) scripts/run_config.py --sequence $$s --method $$m --runs $(RUNS); done; done
 	for s in tum_fr3 replica_room0; do $(PY) scripts/run_config.py --sequence $$s --method rgbd_gt --runs $(RUNS); done
-	$(PY) scripts/part1/compare_cores.py
 	$(PY) scripts/part1/determinism.py
 	$(PY) scripts/make_tables.py table1
 

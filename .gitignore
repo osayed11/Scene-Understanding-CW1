@@ -41,3 +41,8 @@ report/*.fls
 submission/
 .pytest_cache/
 # pyslam.diff and PYSLAM_TAG at the root ARE tracked (submission items)
+
+# archives of the data (sequences are not submitted)
+*.zip
+*.tgz
+*.tar.xz

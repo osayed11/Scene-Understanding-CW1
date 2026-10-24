@@ -59,7 +59,10 @@ def umeyama(src: np.ndarray, dst: np.ndarray, with_scale: bool):
     """
     mu_s, mu_d = src.mean(0), dst.mean(0)
     xs, xd = src - mu_s, dst - mu_d
-    cov = xd.T @ xs / len(src)
+    # OpenBLAS on Apple silicon leaves FP exception flags set, so numpy reports a spurious
+    # 'divide by zero in matmul'; the result is finite and identical to einsum (checked).
+    with np.errstate(all="ignore"):
+        cov = xd.T @ xs / len(src)
     U, D, Vt = np.linalg.svd(cov)
     S = np.eye(3)
     if np.linalg.det(U) * np.linalg.det(Vt) < 0:

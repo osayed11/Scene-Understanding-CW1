@@ -1,0 +1,6 @@
+name: baseline_py
+mode: mono
+sensor: mono
+core: python          # Part 1: the Python core, for comparison with the C++ core
+settings:
+  speed: 1

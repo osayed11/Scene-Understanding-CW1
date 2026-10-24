@@ -18,10 +18,9 @@ data/ depth_maps/ sequences and predicted depth (git-ignored, NOT submitted)
 ## Setup
 
 ```bash
-export PYSLAM_TAG=<tag named in the coursework release>
-make setup                       # clones pySLAM, installs default + depth pixi envs (~7 GB weights)
+bash scripts/setup/clone_pyslam.sh   # clones sjulier/pyslam at comp0227-2026-lab03.1 (PYSLAM_TAG), builds it, installs depth weights (~7 GB)
 pip install numpy scipy pandas pyyaml opencv-python-headless matplotlib tqdm pytest
-bash scripts/setup/download_tum.sh
+bash scripts/setup/download_data.sh   # about 14 GB download
 python scripts/setup/prepare_kitti06.py
 python scripts/setup/prepare_replica_room0.py
 make test
@@ -31,7 +30,7 @@ make test
 
 | Report item | Command | Output |
 |---|---|---|
-| Table 1: baseline, C++ vs Python core, determinism, RGB-D reference | `make table1` | `results/tables/table1_*.csv` |
+| Table 1: baseline, determinism (and C++ vs Python core: methods baseline / baseline_py), RGB-D reference | `make table1` | `results/tables/table1_*.csv` |
 | Depth maps for every frame (reused by all later parts) | `make depth_maps` | `depth_maps/<seq>/` |
 | Table 2: depth quality, temporal consistency, keypoint depth + uncertainty + scale | `make table2` | `results/tables/table2_*.csv` |
 | Table 3: pseudo RGB-D, method A, method B, trust sweeps | `make table3` | `results/tables/table3_*.csv` |
@@ -39,7 +38,8 @@ make test
 | Submission zip (code, results, report) | `make submission` | `submission/` |
 
 Each run appends one row to `results/results.csv` via `scripts/measure_run.py` and saves its trajectory to
-`results/trajectories/<run_id>.txt` (TUM format), so every number can be recomputed with:
+`results/trajectories/<run_id>.txt` (TUM format); pySLAM's own log, config and plots are in `results/logs/<run_id>/`.
+Every number can be recomputed with:
 
 ```bash
 python scripts/measure_run.py --sequence tum_fr3 --method baseline --run 1
@@ -52,8 +52,8 @@ python scripts/measure_run.py --sequence tum_fr3 --method baseline --run 1
 | `ate_noscale` | RMSE of position after SE(3) alignment (Umeyama, scale fixed at 1) |
 | `ate_scale`, `scale` | RMSE after Sim(3) alignment and the scale that was fitted |
 | `rpe_trans`, `rpe_rot_deg` | RMSE of relative translation (m) / rotation (deg) over `rpe_delta` frames, estimate pre-scaled by `scale` |
-| `tracked`, `lost_spans` | share of GT frames with a pose; time intervals where tracking was lost |
-| `time_per_frame` | wall-clock seconds per frame (machine: TODO) |
+| `tracked`, `lost_spans` | poses produced / frames in the sequence; time intervals with no pose for > 3 frame intervals |
+| `time_per_frame`, `wall_per_frame` | mean per-frame time of pySLAM's tracking thread (from its tracking.log); wall-clock seconds of the run / frames (with `speed=1` bounded by the playback), headless (machine: MacBook, Apple M4, 10 cores, 24 GB, macOS 26; pySLAM C++ core unless stated) |
 
 Estimates are associated to GT by nearest timestamp within `--max-dt` (default 0.02 s).
 

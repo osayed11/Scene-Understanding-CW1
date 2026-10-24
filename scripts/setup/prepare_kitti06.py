@@ -1,3 +1,4 @@
-"""Part 1: get KITTI 06 into a form pySLAM reads, with ground truth in TUM format.
-TODO: extract frames from data/videos/kitti06 (or use KITTI odometry images), build timestamps,
-convert poses/06.txt (3x4 per line, camera-0 frame) to TUM `t tx ty tz qx qy qz qw`."""
+"""Part 1: KITTI 06 needs no conversion. pySLAM reads the colour video with --video, the frame timestamps
+(times.txt) and groundtruth.txt (t tx ty tz qx qy qz qw scale), all shipped with pySLAM in
+data/videos/kitti06. scripts/measure_run.py reads the same groundtruth.txt (first 8 columns).
+The frames are extracted from the video for the depth network by scripts/setup/download_data.sh."""

@@ -4,3 +4,4 @@ images: data/own/rgb
 groundtruth: data/own/reference_tum.txt           # reference from COLMAP / VGGT, scaled by a measured distance
 depth_gt: null                                    # or data/own/depth if recorded with the D455
 depth_pred: depth_maps/own
+frame_list: data/own/rgb.txt

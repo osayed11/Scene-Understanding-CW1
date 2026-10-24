@@ -1,4 +1,6 @@
 name: baseline
 mode: mono            # pySLAM unchanged, monocular
-core: cpp             # cpp | python  (Part 1 compares both)
-settings: {}          # no trust parameter
+sensor: mono
+core: cpp             # cpp | python  (Part 1 compares both; PYSLAM_USE_CPP)
+settings:
+  speed: 1            # playback at the camera's frame rate; 0 = as fast as possible (mapping cannot keep up: tracking losses)
