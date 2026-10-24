@@ -23,8 +23,8 @@ depth_maps:
 	$(PY) scripts/part2/predict_depth.py --all
 table2: 
 	$(PY) scripts/part2/eval_depth.py
-	$(PY) scripts/part2/temporal_consistency.py
-	$(PY) scripts/part2/keypoint_depth.py
+	$(PY) scripts/part2/temporal_consistency.py --all
+	$(PY) scripts/part2/keypoint_depth.py --all
 	$(PY) scripts/make_tables.py table2
 
 # ---- Part 3 (Table 3): pseudo RGB-D reference + methods + trust sweeps ----
