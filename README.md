@@ -57,7 +57,7 @@ python scripts/measure_run.py --sequence tum_fr3 --method baseline --run 1
 | `ate_scale`, `scale` | RMSE after Sim(3) alignment and the scale that was fitted |
 | `rpe_trans`, `rpe_rot_deg` | RMSE of relative translation (m) / rotation (deg) over `rpe_delta` frames, estimate pre-scaled by `scale` |
 | `tracked`, `lost_spans` | poses produced / frames in the sequence; time intervals with no pose for > 3 frame intervals |
-| `time_per_frame`, `wall_per_frame` | mean per-frame time of pySLAM's tracking thread (from its tracking.log); wall-clock seconds of the run / frames (with `speed=1` bounded by the playback), headless (machine: MacBook, Apple M4, 10 cores, 24 GB, macOS 26; pySLAM C++ core unless stated) |
+| `time_per_frame`, `time_per_frame_p90`, `wall_per_frame` | median (and 90th percentile) per-frame time of pySLAM's tracking thread (from its tracking.log; the median so that a sleeping laptop does not count); wall-clock seconds of the run / frames (with `speed=1` bounded by the playback), headless (machine: MacBook, Apple M4, 10 cores, 24 GB, macOS 26; pySLAM C++ core unless stated) |
 
 Estimates are associated to GT by nearest timestamp within `--max-dt` (default 0.02 s).
 

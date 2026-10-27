@@ -6,7 +6,7 @@ Arrays (one row per observation of a good map point by a good keyframe):
   obs_depth_map  depth of the point in that keyframe's camera (map units; metres only for RGB-D runs)
 Per point: point_id, point_xyz (map units), point_parallax_deg (largest angle between the rays of its observations).
 Per keyframe: kf_id, kf_img_id (frame index in the sequence), kf_timestamp, kf_Tcw (4x4).
-The pose convention is verified by reprojecting every point into its keyframes (median error must be < 2 px).
+The pose convention is verified by reprojecting every point into its keyframes (median error must be < 20 px).
 The heavy files (map.json, loop_closing.db) are deleted afterwards unless --keep.
 
 usage: python scripts/extract_map.py results/logs/<run_id>/map [--keep]
@@ -53,7 +53,7 @@ def extract(map_dir: Path, keep: bool = False) -> Path:
     kp_uv = np.array([kf_kpsu[k][j] for k, j in zip(obs_kf, obs_kp)])
     reproj = np.linalg.norm(uv - kp_uv, axis=1)
     med = float(np.median(reproj))
-    if med > 2.0:
+    if med > 20.0:  # a wrong convention gives hundreds of px; KITTI mono maps sit at ~2.5 px, TUM ~1 px
         raise RuntimeError(f"{map_dir}: median reprojection error {med:.1f} px: pose convention wrong?")
 
     # parallax per point: largest angle between the rays from the observing camera centres

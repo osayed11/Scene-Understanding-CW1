@@ -3,6 +3,7 @@
 usage: python scripts/measure_run.py --sequence tum_fr3 --method baseline --run 1 [--traj path] [--rpe-delta 10]
 """
 import argparse, re, sys
+import numpy as np
 from pathlib import Path
 import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -19,13 +20,14 @@ def wall_per_frame(log: Path, n_frames: int) -> float:
     return float(m.group(1)) / n_frames if m else float("nan")
 
 
-def tracking_time_per_frame(tracking_log: Path) -> float:
-    """Mean of pySLAM's own per-frame 'Tracking: elapsed_time' (the compute time of the tracking thread per
-    frame, independent of the playback speed)."""
+def tracking_time_per_frame(tracking_log: Path):
+    """Median and 90th percentile of pySLAM's own per-frame 'Tracking: elapsed_time' (the compute time of the
+    tracking thread per frame, independent of the playback speed). The median, not the mean: a laptop that
+    sleeps mid-run makes one frame 'take' an hour."""
     if not tracking_log.exists():
-        return float("nan")
-    t = [float(m) for m in re.findall(r"Tracking: elapsed_time:\s+([\d.eE+-]+)", tracking_log.read_text())]
-    return sum(t) / len(t) if t else float("nan")
+        return float("nan"), float("nan")
+    t = np.array([float(m) for m in re.findall(r"Tracking: elapsed_time:\s+([\d.eE+-]+)", tracking_log.read_text())])
+    return (float(np.median(t)), float(np.percentile(t, 90))) if len(t) else (float("nan"), float("nan"))
 
 
 def pyslam_stat(log_dir: Path, key: str) -> float:
@@ -56,13 +58,13 @@ def main():
     gt = load_tum(ROOT / seq["groundtruth"])
     log_dir = RESULTS / "logs" / rid
     n_frames = count_frames(seq, log_dir)
-    tpf = tracking_time_per_frame(log_dir / "pyslam_logs" / "tracking.log")
+    tpf, tpf_p90 = tracking_time_per_frame(log_dir / "pyslam_logs" / "tracking.log")
     m = evaluate(est, gt, n_frames=n_frames, rpe_delta=a.rpe_delta, max_dt=a.max_dt, time_per_frame=tpf)
 
     row = {"run_id": rid, "sequence": a.sequence, "method": a.method,
            "settings": ";".join(f"{k}={v}" for k, v in sorted(settings.items())), "run": a.run,
            "rpe_delta": a.rpe_delta, **m.as_row(),
-           "wall_per_frame": wall_per_frame(log_dir / "stdout.log", n_frames),
+           "time_per_frame_p90": tpf_p90, "wall_per_frame": wall_per_frame(log_dir / "stdout.log", n_frames),
            "pyslam_tracked_frames": pyslam_stat(log_dir, "num_tracked_frames")}
     csv = Path(a.csv)
     df = pd.read_csv(csv) if csv.exists() else pd.DataFrame()
