@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "benchmark_kind": "spread_frame_model_comparison",
+  "signature": {
+    "model": "dav2_base",
+    "checkpoint_sha256": "4dad67a7cc10b462bca48e6b8569c762b8eb3c1adada170a3851a6d3ba37bb3e",
+    "checkpoint": {
+      "kind": "file",
+      "sha256": "4dad67a7cc10b462bca48e6b8569c762b8eb3c1adada170a3851a6d3ba37bb3e",
+      "files": {
+        "depth_anything_v2_metric_vkitti_vitb.pth": {
+          "sha256": "4dad67a7cc10b462bca48e6b8569c762b8eb3c1adada170a3851a6d3ba37bb3e",
+          "bytes": 389964656
+        }
+      }
+    },
+    "device": "cpu",
+    "precision": "float32",
+    "domain": "vkitti",
+    "process_res": null,
+    "selection": [
+      {
+        "sequence": "kitti06",
+        "index": 110
+      },
+      {
+        "sequence": "kitti06",
+        "index": 550
+      },
+      {
+        "sequence": "kitti06",
+        "index": 990
+      }
+    ],
+    "source_git_commit": "a561b849ebae10a6f5ef49e26c83cbbcd36c71bf",
+    "adapter": {
+      "model": "dav2_base",
+      "precision": "float32",
+      "domain": "vkitti",
+      "parameter_count": 97470785,
+      "process_res": 518,
+      "resize_policy": "lower_bound_short_side",
+      "max_depth_m": 80.0,
+      "input_color": "BGR_to_RGB_in_official_processor",
+      "metric_conversion": "matching_trained_max_depth"
+    },
+    "runtime": {
+      "python": "3.10.12",
+      "torch": "2.14.1+cpu",
+      "numpy": "1.26.4",
+      "opencv": "4.10.0",
+      "device": "cpu",
+      "cpu": "x86_64",
+      "torch_num_threads": 6,
+      "torch_num_interop_threads": 6,
+      "gpu": null,
+      "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35"
+    }
+  },
+  "config_sha256": "ca997da29cb14d23737cad6872a63bf438f621549381f7f7de3db5fea5e1ccb5",
+  "setup_seconds": 4.5545758879998175,
+  "warmup": {
+    "status": "ok",
+    "inference_seconds": 11.670272342000317,
+    "sequence": "kitti06",
+    "index": 110
+  },
+  "frames": [
+    {
+      "sequence": "kitti06",
+      "index": 110,
+      "timestamp": 11.43462,
+      "stem": "000110",
+      "rgb": "/home/adria/.cache/cw1_model_comparison/cw1_depth_model_comparison/data/kitti06/image_2/000110.png",
+      "camera": {
+        "fx": 707.0912,
+        "fy": 707.0912,
+        "cx": 601.8873,
+        "cy": 183.1104,
+        "width": 1226,
+        "height": 370
+      },
+      "prediction": "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/depth_maps/model_benchmarks/spread_dav2_base_vkitti_cpu_float32/kitti06/000110.npy",
+      "status": "ok",
+      "inference_seconds": 12.652693291000105,
+      "raw": null,
+      "median_scaled": null,
+      "gt_depth_factor": null,
+      "depth_timestamp": null,
+      "rgb_sha256": "b36d19ebec2558e7fb28af15c95846608326be7f05279089385d9c36a0cb9284",
+      "depth_gt_sha256": null,
+      "prediction_sha256": "16289d248bbb9d2c37a6be784cac8cafbe01e30ff23d88259fcd106e0dc0d9a8",
+      "gt_status": "no_ground_truth"
+    },
+    {
+      "sequence": "kitti06",
+      "index": 550,
+      "timestamp": 57.16854,
+      "stem": "000550",
+      "rgb": "/home/adria/.cache/cw1_model_comparison/cw1_depth_model_comparison/data/kitti06/image_2/000550.png",
+      "camera": {
+        "fx": 707.0912,
+        "fy": 707.0912,
+        "cx": 601.8873,
+        "cy": 183.1104,
+        "width": 1226,
+        "height": 370
+      },
+      "prediction": "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/depth_maps/model_benchmarks/spread_dav2_base_vkitti_cpu_float32/kitti06/000550.npy",
+      "status": "ok",
+      "inference_seconds": 12.51932368100006,
+      "raw": null,
+      "median_scaled": null,
+      "gt_depth_factor": null,
+      "depth_timestamp": null,
+      "rgb_sha256": "799f4e62ddab1577a3c05a34ae88c24b809469baea3bef172b9c9344cf62b344",
+      "depth_gt_sha256": null,
+      "prediction_sha256": "145e7cfe19b8ab2ff334e21b5b27dede9c3ab84fd795322e18cef7785cca89af",
+      "gt_status": "no_ground_truth"
+    },
+    {
+      "sequence": "kitti06",
+      "index": 990,
+      "timestamp": 102.8613,
+      "stem": "000990",
+      "rgb": "/home/adria/.cache/cw1_model_comparison/cw1_depth_model_comparison/data/kitti06/image_2/000990.png",
+      "camera": {
+        "fx": 707.0912,
+        "fy": 707.0912,
+        "cx": 601.8873,
+        "cy": 183.1104,
+        "width": 1226,
+        "height": 370
+      },
+      "prediction": "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/depth_maps/model_benchmarks/spread_dav2_base_vkitti_cpu_float32/kitti06/000990.npy",
+      "status": "ok",
+      "inference_seconds": 12.265323315000387,
+      "raw": null,
+      "median_scaled": null,
+      "gt_depth_factor": null,
+      "depth_timestamp": null,
+      "rgb_sha256": "4e7812e48a0b92a2626e2f663e51908d9254490f7ddc983bd2106b3e0d27ff9a",
+      "depth_gt_sha256": null,
+      "prediction_sha256": "bcd9d865732fde52bdbfe26a22ca0970152f375e8c68b6361585d575c414d3a3",
+      "gt_status": "no_ground_truth"
+    }
+  ],
+  "status": "complete",
+  "warmup_sessions": [
+    {
+      "status": "ok",
+      "inference_seconds": 11.670272342000317,
+      "sequence": "kitti06",
+      "index": 110
+    }
+  ],
+  "summaries": {
+    "kitti06": {
+      "frames_requested": 3,
+      "frames_ok": 3,
+      "frames_failed": 0,
+      "frames_pending": 0,
+      "frames_no_gt": 3,
+      "frames_with_gt": 0,
+      "mean_inference_seconds": 12.479113429000185,
+      "aggregation": "mean_per_frame",
+      "raw": {
+        "abs_rel": null,
+        "rmse_m": null,
+        "delta1": null,
+        "scale": null,
+        "prediction_coverage": null
+      },
+      "median_scaled": {
+        "abs_rel": null,
+        "rmse_m": null,
+        "delta1": null,
+        "scale": null,
+        "prediction_coverage": null
+      }
+    },
+    "overall": {
+      "frames_requested": 3,
+      "frames_ok": 3,
+      "frames_failed": 0,
+      "frames_pending": 0,
+      "frames_no_gt": 3,
+      "frames_with_gt": 0,
+      "mean_inference_seconds": 12.479113429000185,
+      "aggregation": "mean_per_frame",
+      "raw": {
+        "abs_rel": null,
+        "rmse_m": null,
+        "delta1": null,
+        "scale": null,
+        "prediction_coverage": null
+      },
+      "median_scaled": {
+        "abs_rel": null,
+        "rmse_m": null,
+        "delta1": null,
+        "scale": null,
+        "prediction_coverage": null
+      }
+    }
+  }
+}

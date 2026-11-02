@@ -1,0 +1,22 @@
+{"started_utc": "2026-11-02T18:36:15.860702+00:00", "arguments": ["--all", "--pred-root", "depth_maps/da3_metric_large_cpu_float32", "--data-root", "../data", "--output", "results/tables/da3/full_cpu_float32/table2_keypoints.csv", "--keypoints-root", "results/keypoints/da3_cpu_float32"], "opencv_threads": 1}
+Traceback (most recent call last):
+  File "<stdin>", line 35, in <module>
+  File "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/scripts/part2/keypoint_depth.py", line 207, in main
+    rows = [analyze_sequence(sequence, args) for sequence in sequences]
+  File "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/scripts/part2/keypoint_depth.py", line 207, in <listcomp>
+    rows = [analyze_sequence(sequence, args) for sequence in sequences]
+  File "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/scripts/part2/keypoint_depth.py", line 135, in analyze_sequence
+    depth_m, sigma_m = depth_at_keypoints(prediction, uv, radius=args.radius)
+  File "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/scripts/depth.py", line 106, in depth_at_keypoints
+    pixels = np.rint(kps[selected]).astype(np.int64)
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/function_base.py", line 3927, in median
+    return _ureduce(a, func=_median, keepdims=keepdims, axis=axis, out=out,
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/function_base.py", line 3823, in _ureduce
+    r = func(a, **kwargs)
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/function_base.py", line 3982, in _median
+    rout = np.lib.utils._median_nancheck(part, rout, axis)
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/utils.py", line 1111, in _median_nancheck
+    if not n.any():
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/core/_methods.py", line 58, in _any
+    return umr_any(a, axis, dtype, out, keepdims)
+KeyboardInterrupt

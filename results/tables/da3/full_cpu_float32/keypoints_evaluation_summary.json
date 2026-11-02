@@ -1,0 +1,309 @@
+{
+  "status": "complete",
+  "pid": 520,
+  "started_utc": "2026-11-02T18:44:25.924245+00:00",
+  "arguments": [
+    "--all",
+    "--pred-root",
+    "depth_maps/da3_metric_large_cpu_float32",
+    "--data-root",
+    "../data",
+    "--output",
+    "results/tables/da3/full_cpu_float32/table2_keypoints.csv",
+    "--keypoints-root",
+    "results/keypoints/da3_cpu_float32"
+  ],
+  "expected_frames": 5686,
+  "stride": 1,
+  "nfeatures_requested": 2000,
+  "patch_radius": 3,
+  "opencv_threads": 1,
+  "opencv_version": "4.10.0",
+  "numpy_version": "1.26.4",
+  "math_thread_environment": {
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2"
+  },
+  "aggregation": "pooled valid keypoints per sequence (dense depth metrics instead use equal-frame means)",
+  "provenance": {
+    "scripts_depth_sha256": "5fb7a9b132469827be0f59647ae5fd3c63e8e8ffa725f6243195af536640998c",
+    "depth_at_keypoints_source_sha256": "980b4e2af9670b225a2896bd622b2d084c8b9c9ee79ab776c96640675b6674f7",
+    "keypoint_depth_script_sha256": "2a220ba803b412e3cd65adf70cad8995ecb3b2900475c43b9000b0f03f4e87db",
+    "sampling_implementation": "batched patches/nanmedian; direct radius0; unchanged scalar fallback for uncommon dtypes",
+    "equivalence_validation": {
+      "targeted_tests_passed": 35,
+      "comparison": "exact array equality, including NaNs and float32 outputs",
+      "synthetic_cases": "random float32/float64/float16/integer depths; NaN/inf/zero/negative; borders; half-pixel and outer-edge rounding; oversized radius; empty/all-invalid patches; batch boundaries",
+      "real_frames": [
+        {
+          "sequence": "kitti06",
+          "index": 550,
+          "keypoints": 2000,
+          "scalar_seconds": 0.224281851,
+          "vector_seconds": 0.012146023,
+          "speedup": 18.4654558121
+        },
+        {
+          "sequence": "tum_fr3",
+          "index": 1292,
+          "keypoints": 2000,
+          "scalar_seconds": 0.180726586,
+          "vector_seconds": 0.014107448,
+          "speedup": 12.8107214005
+        },
+        {
+          "sequence": "replica_room0",
+          "index": 1000,
+          "keypoints": 2000,
+          "scalar_seconds": 0.171737025,
+          "vector_seconds": 0.014197211,
+          "speedup": 12.0965325513
+        }
+      ],
+      "real_prediction_depth_and_sigma_exact": true,
+      "real_indoor_gt_radius0_exact": true,
+      "previously_saved_npz_values_exact": true,
+      "independent_numpy2_review": {
+        "numpy_version": "2.5.3",
+        "pure_numeric_cases": 40,
+        "float_dtypes": [
+          "float32",
+          "float64"
+        ],
+        "depth_scales": "1e-35 through 1e30",
+        "radii": [
+          0,
+          1,
+          3,
+          15
+        ],
+        "invalid_and_border_cases": true,
+        "all_arrays_exact": true
+      }
+    },
+    "superseded_attempt_summary": "keypoints_evaluation_summary_scalar_attempt.json"
+  },
+  "limitations": [
+    "OpenCV ORB diagnostic points do not claim to match saved SLAM detector/keypoints.",
+    "Local-patch sigma is a depth-dependent/local-dispersion heuristic, not calibrated posterior uncertainty.",
+    "No paired triangulated map observations supplied: map scale remains unavailable.",
+    "KITTI has no supplied depth ground truth; TUM errors exclude invalid GT and use nearest timestamp matches within 20ms.",
+    "Sigma/error correlation can reflect their shared dependence on distance; 1x coverage is an empirical diagnostic, not a calibrated probability."
+  ],
+  "rows": [
+    {
+      "sequence": "kitti06",
+      "keypoint_source": "opencv_ORB_diagnostic",
+      "matches_saved_slam_keypoints": "False",
+      "uncertainty_kind": "local_patch_dispersion_heuristic",
+      "n_frames": "1101",
+      "stride": "1",
+      "nfeatures_requested": "2000",
+      "patch_radius": "3",
+      "n_keypoints": "2201712",
+      "n_valid_depth": "2201712",
+      "valid_depth_fraction": "1.0",
+      "median_sigma_m": "1.0546956062316895",
+      "n_gt_frames": "0",
+      "n_keypoints_with_gt": "0",
+      "gt_status": "unavailable_or_no_valid_pairs",
+      "keypoint_rmse_m": "nan",
+      "keypoint_absrel": "nan",
+      "keypoint_delta_1_25": "nan",
+      "heuristic_sigma_coverage_1x": "nan",
+      "sigma_abs_error_correlation": "nan",
+      "map_scale_status": "unavailable_no_map_samples",
+      "scale_map_units_per_metre": "nan",
+      "scale_metres_per_map_unit": "nan",
+      "n_scale_input": "0",
+      "n_scale_candidates": "0",
+      "n_scale_support": "0"
+    },
+    {
+      "sequence": "tum_fr3",
+      "keypoint_source": "opencv_ORB_diagnostic",
+      "matches_saved_slam_keypoints": "False",
+      "uncertainty_kind": "local_patch_dispersion_heuristic",
+      "n_frames": "2585",
+      "stride": "1",
+      "nfeatures_requested": "2000",
+      "patch_radius": "3",
+      "n_keypoints": "4960839",
+      "n_valid_depth": "4960839",
+      "valid_depth_fraction": "1.0",
+      "median_sigma_m": "0.03372744470834732",
+      "n_gt_frames": "2488",
+      "n_keypoints_with_gt": "4468466",
+      "gt_status": "available",
+      "keypoint_rmse_m": "0.37272645041869445",
+      "keypoint_absrel": "0.0876745393209233",
+      "keypoint_delta_1_25": "0.9450927902327108",
+      "heuristic_sigma_coverage_1x": "0.1808020918140588",
+      "sigma_abs_error_correlation": "0.4025879712728643",
+      "map_scale_status": "unavailable_no_map_samples",
+      "scale_map_units_per_metre": "nan",
+      "scale_metres_per_map_unit": "nan",
+      "n_scale_input": "0",
+      "n_scale_candidates": "0",
+      "n_scale_support": "0"
+    },
+    {
+      "sequence": "replica_room0",
+      "keypoint_source": "opencv_ORB_diagnostic",
+      "matches_saved_slam_keypoints": "False",
+      "uncertainty_kind": "local_patch_dispersion_heuristic",
+      "n_frames": "2000",
+      "stride": "1",
+      "nfeatures_requested": "2000",
+      "patch_radius": "3",
+      "n_keypoints": "3953368",
+      "n_valid_depth": "3953368",
+      "valid_depth_fraction": "1.0",
+      "median_sigma_m": "0.06169804930686951",
+      "n_gt_frames": "2000",
+      "n_keypoints_with_gt": "3951853",
+      "gt_status": "available",
+      "keypoint_rmse_m": "0.2997031060774856",
+      "keypoint_absrel": "0.060869097163205904",
+      "keypoint_delta_1_25": "0.961725296968283",
+      "heuristic_sigma_coverage_1x": "0.32676240740736057",
+      "sigma_abs_error_correlation": "0.4952182520671675",
+      "map_scale_status": "unavailable_no_map_samples",
+      "scale_map_units_per_metre": "nan",
+      "scale_metres_per_map_unit": "nan",
+      "n_scale_input": "0",
+      "n_scale_candidates": "0",
+      "n_scale_support": "0"
+    }
+  ],
+  "frames_analyzed": 5686,
+  "total_keypoints": 11115919,
+  "total_keypoints_with_gt": 8420319,
+  "finished_utc": "2026-11-02T18:56:51.049301+00:00",
+  "elapsed_seconds": 779.5244697429999,
+  "verified_npz_frame_counts": {
+    "kitti06": 1101,
+    "tum_fr3": 2585,
+    "replica_room0": 2000
+  },
+  "sample_npz_validation": [
+    {
+      "sequence": "kitti06",
+      "stem": "000000",
+      "frame_index": 0,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "kitti06",
+      "stem": "000550",
+      "frame_index": 550,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "kitti06",
+      "stem": "001100",
+      "frame_index": 1100,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "tum_fr3",
+      "stem": "1341847980.722988",
+      "frame_index": 0,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "tum_fr3",
+      "stem": "1341848024.258826",
+      "frame_index": 1292,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "tum_fr3",
+      "stem": "1341848067.862808",
+      "frame_index": 2584,
+      "keypoints": 1999
+    },
+    {
+      "sequence": "replica_room0",
+      "stem": "frame000000",
+      "frame_index": 0,
+      "keypoints": 1988
+    },
+    {
+      "sequence": "replica_room0",
+      "stem": "frame001000",
+      "frame_index": 1000,
+      "keypoints": 2000
+    },
+    {
+      "sequence": "replica_room0",
+      "stem": "frame001999",
+      "frame_index": 1999,
+      "keypoints": 1798
+    }
+  ],
+  "numeric_metrics": [
+    {
+      "sequence": "kitti06",
+      "map_scale_status": "unavailable_no_map_samples",
+      "n_frames": 1101,
+      "n_keypoints": 2201712,
+      "n_valid_depth": 2201712,
+      "n_gt_frames": 0,
+      "n_keypoints_with_gt": 0,
+      "valid_depth_fraction": 1.0,
+      "median_sigma_m": 1.0546956062316895,
+      "keypoint_rmse_m": null,
+      "keypoint_absrel": null,
+      "keypoint_delta_1_25": null,
+      "heuristic_sigma_coverage_1x": null,
+      "sigma_abs_error_correlation": null,
+      "scale_map_units_per_metre": null,
+      "scale_metres_per_map_unit": null
+    },
+    {
+      "sequence": "tum_fr3",
+      "map_scale_status": "unavailable_no_map_samples",
+      "n_frames": 2585,
+      "n_keypoints": 4960839,
+      "n_valid_depth": 4960839,
+      "n_gt_frames": 2488,
+      "n_keypoints_with_gt": 4468466,
+      "valid_depth_fraction": 1.0,
+      "median_sigma_m": 0.03372744470834732,
+      "keypoint_rmse_m": 0.37272645041869445,
+      "keypoint_absrel": 0.0876745393209233,
+      "keypoint_delta_1_25": 0.9450927902327108,
+      "heuristic_sigma_coverage_1x": 0.1808020918140588,
+      "sigma_abs_error_correlation": 0.4025879712728643,
+      "scale_map_units_per_metre": null,
+      "scale_metres_per_map_unit": null
+    },
+    {
+      "sequence": "replica_room0",
+      "map_scale_status": "unavailable_no_map_samples",
+      "n_frames": 2000,
+      "n_keypoints": 3953368,
+      "n_valid_depth": 3953368,
+      "n_gt_frames": 2000,
+      "n_keypoints_with_gt": 3951853,
+      "valid_depth_fraction": 1.0,
+      "median_sigma_m": 0.06169804930686951,
+      "keypoint_rmse_m": 0.2997031060774856,
+      "keypoint_absrel": 0.060869097163205904,
+      "keypoint_delta_1_25": 0.961725296968283,
+      "heuristic_sigma_coverage_1x": 0.32676240740736057,
+      "sigma_abs_error_correlation": 0.4952182520671675,
+      "scale_map_units_per_metre": null,
+      "scale_metres_per_map_unit": null
+    }
+  ],
+  "observed_frames_per_second": 7.2941905234541355,
+  "artifacts": {
+    "summary_csv": "results/tables/da3/full_cpu_float32/table2_keypoints.csv",
+    "keypoint_root": "results/keypoints/da3_cpu_float32",
+    "log": "results/tables/da3/full_cpu_float32/keypoints_evaluation.log"
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "scope": "full_cache_manifest_timing_and_metadata_with_integrity_checks",
+  "overall": {
+    "frames": 5686,
+    "inference_seconds": {
+      "count": 5686,
+      "min": 1.4303847440023674,
+      "max": 7.21012319700003,
+      "mean": 3.2469610690630035,
+      "median": 3.61761800149543,
+      "p90": 4.433484535999014,
+      "sum": 18462.220638692237
+    },
+    "warmup_seconds": 11.116515844004766,
+    "session_count": 4,
+    "sessions_with_recorded_finish": 3,
+    "first_session_started_utc": "2026-11-02T01:08:11.025986+00:00",
+    "last_session_finished_utc": "2026-11-02T18:26:27.205182+00:00",
+    "elapsed_first_start_to_last_finish_seconds": 62296.179196,
+    "observed_active_pipeline_wall_seconds": 20359.978359,
+    "observed_gaps_between_pipeline_sessions_seconds": 41936.200837,
+    "observed_interruption_interval_seconds": 41918.241115,
+    "global_depth_min_m": 0.4373420178890228,
+    "global_depth_max_m": 157.15834045410156,
+    "frames_with_invalid_pixels": 0,
+    "frames_with_png_overflow": 0,
+    "integrity_passed": true,
+    "complete_counts": {
+      "kitti06": 1101,
+      "tum_fr3": 2585,
+      "replica_room0": 2000
+    },
+    "observed_other_active_pipeline_seconds": 1886.6412044637586
+  },
+  "sequences": {
+    "kitti06": {
+      "frames": 1101,
+      "inference_seconds": {
+        "count": 1101,
+        "min": 1.4303847440023674,
+        "max": 5.145268314008717,
+        "mean": 1.8030300544730606,
+        "median": 1.6294304670009296,
+        "p90": 2.2500778089888627,
+        "sum": 1985.1360899748397
+      },
+      "invalid_fraction": {
+        "count": 1101,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "png_overflow_fraction": {
+        "count": 1101,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "frames_with_invalid_pixels": 0,
+      "frames_with_png_overflow": 0,
+      "global_depth_min_m": 1.2555434703826904,
+      "global_depth_max_m": 157.15834045410156,
+      "per_frame_depth_min_m": {
+        "count": 1101,
+        "min": 1.2555434703826904,
+        "max": 4.036412715911865,
+        "mean": 2.948946672282795,
+        "median": 3.098729133605957,
+        "p90": 3.4037954807281494,
+        "sum": 3246.7902861833572
+      },
+      "per_frame_depth_max_m": {
+        "count": 1101,
+        "min": 26.160049438476562,
+        "max": 157.15834045410156,
+        "mean": 103.44776361103386,
+        "median": 106.20147705078125,
+        "p90": 128.21095275878906,
+        "sum": 113895.98773574829
+      },
+      "depth_factor": 256.0,
+      "png_max_depth_m": 255.99609375,
+      "camera": {
+        "fx": 707.0912,
+        "fy": 707.0912,
+        "cx": 601.8873,
+        "cy": 183.1104,
+        "width": 1226,
+        "height": 370,
+        "K": [
+          [
+            707.0912,
+            0.0,
+            601.8873
+          ],
+          [
+            0.0,
+            707.0912,
+            183.1104
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "preprocessing_variants": [
+        {
+          "frames": 1101,
+          "metric_scale": 0.9749717203776042,
+          "processed_intrinsics": [
+            [
+              290.68023681640625,
+              0.0,
+              247.43167114257812
+            ],
+            [
+              0.0,
+              294.30279541015625,
+              76.21351623535156
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "processed_shape": [
+            154,
+            504
+          ]
+        }
+      ],
+      "sessions": [
+        {
+          "sequence": "kitti06",
+          "session_id": "f30819722c864355af7f64c165bbb736",
+          "started_utc": "2026-11-02T01:08:11.025986+00:00",
+          "finished_utc": "2026-11-02T01:47:05.718073+00:00",
+          "finish_recorded": true,
+          "last_committed_png_mtime_utc": "2026-11-02T01:47:05.596905+00:00",
+          "observed_end_utc": "2026-11-02T01:47:05.718073+00:00",
+          "wall_seconds": 2334.692087,
+          "observed_wall_seconds_to_last_output_if_unfinished": 2334.692087,
+          "committed_frames": 1101,
+          "manifest_new_frames": 1101,
+          "inference_seconds": 1985.1360899748397,
+          "warmup_seconds": 1.8168482530018082,
+          "runtime": {
+            "python": "3.10.12",
+            "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+            "torch": "2.14.1+cpu",
+            "torch_cuda": null,
+            "device": "cpu",
+            "cpu_threads": 6
+          },
+          "frame_indices": [
+            0,
+            1100
+          ],
+          "observed_other_wall_seconds": 347.7391487721584
+        }
+      ],
+      "inter_session_gaps": [],
+      "session_count": 1,
+      "warmup_seconds": 1.8168482530018082,
+      "observed_active_pipeline_wall_seconds": 2334.692087,
+      "observed_interruption_interval_seconds": 0.0,
+      "timing_scope": "synchronized preprocessing + network + native metric postprocessing; excludes RGB IO, source hashing, cache serialization and model setup",
+      "integrity_passed": true
+    },
+    "tum_fr3": {
+      "frames": 2585,
+      "inference_seconds": {
+        "count": 2585,
+        "min": 3.2845402369857766,
+        "max": 7.15982616499241,
+        "mean": 4.06666641390927,
+        "median": 3.8082506509963423,
+        "p90": 4.765499607607489,
+        "sum": 10512.332679955463
+      },
+      "invalid_fraction": {
+        "count": 2585,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "png_overflow_fraction": {
+        "count": 2585,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "frames_with_invalid_pixels": 0,
+      "frames_with_png_overflow": 0,
+      "global_depth_min_m": 0.4373420178890228,
+      "global_depth_max_m": 11.013006210327148,
+      "per_frame_depth_min_m": {
+        "count": 2585,
+        "min": 0.4373420178890228,
+        "max": 1.4046944379806519,
+        "mean": 0.9245127407217856,
+        "median": 0.9173265695571899,
+        "p90": 1.2819613218307495,
+        "sum": 2389.8654347658157
+      },
+      "per_frame_depth_max_m": {
+        "count": 2585,
+        "min": 1.1231684684753418,
+        "max": 11.013006210327148,
+        "mean": 5.807106409497141,
+        "median": 6.296352386474609,
+        "p90": 8.459064292907716,
+        "sum": 15011.37006855011
+      },
+      "depth_factor": 5000.0,
+      "png_max_depth_m": 13.107,
+      "camera": {
+        "fx": 535.4,
+        "fy": 539.2,
+        "cx": 320.1,
+        "cy": 247.6,
+        "width": 640,
+        "height": 480,
+        "K": [
+          [
+            535.4,
+            0.0,
+            320.1
+          ],
+          [
+            0.0,
+            539.2,
+            247.6
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "preprocessing_variants": [
+        {
+          "frames": 2585,
+          "metric_scale": 1.41041259765625,
+          "processed_intrinsics": [
+            [
+              421.6275329589844,
+              0.0,
+              252.07876586914062
+            ],
+            [
+              0.0,
+              424.6200256347656,
+              194.98501586914062
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "processed_shape": [
+            378,
+            504
+          ]
+        }
+      ],
+      "sessions": [
+        {
+          "sequence": "tum_fr3",
+          "session_id": "fa6a777ff16245729b1c0f88a41540a9",
+          "started_utc": "2026-11-02T01:47:10.429581+00:00",
+          "finished_utc": "2026-11-02T04:57:09.281346+00:00",
+          "finish_recorded": true,
+          "last_committed_png_mtime_utc": "2026-11-02T04:57:09.005231+00:00",
+          "observed_end_utc": "2026-11-02T04:57:09.281346+00:00",
+          "wall_seconds": 11398.851765,
+          "observed_wall_seconds_to_last_output_if_unfinished": 11398.851765,
+          "committed_frames": 2585,
+          "manifest_new_frames": 2585,
+          "inference_seconds": 10512.332679955463,
+          "warmup_seconds": 3.8826537569984794,
+          "runtime": {
+            "python": "3.10.12",
+            "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+            "torch": "2.14.1+cpu",
+            "torch_cuda": null,
+            "device": "cpu",
+            "cpu_threads": 6
+          },
+          "frame_indices": [
+            0,
+            2584
+          ],
+          "observed_other_wall_seconds": 882.6364312875376
+        }
+      ],
+      "inter_session_gaps": [],
+      "session_count": 1,
+      "warmup_seconds": 3.8826537569984794,
+      "observed_active_pipeline_wall_seconds": 11398.851765,
+      "observed_interruption_interval_seconds": 0.0,
+      "timing_scope": "synchronized preprocessing + network + native metric postprocessing; excludes RGB IO, source hashing, cache serialization and model setup",
+      "integrity_passed": true
+    },
+    "replica_room0": {
+      "frames": 2000,
+      "inference_seconds": {
+        "count": 2000,
+        "min": 2.1112531070000387,
+        "max": 7.21012319700003,
+        "mean": 2.982375934380968,
+        "median": 2.690361290498913,
+        "p90": 3.9803761498000774,
+        "sum": 5964.751868761936
+      },
+      "invalid_fraction": {
+        "count": 2000,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "png_overflow_fraction": {
+        "count": 2000,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "sum": 0.0
+      },
+      "frames_with_invalid_pixels": 0,
+      "frames_with_png_overflow": 0,
+      "global_depth_min_m": 0.680888831615448,
+      "global_depth_max_m": 6.006399631500244,
+      "per_frame_depth_min_m": {
+        "count": 2000,
+        "min": 0.680888831615448,
+        "max": 1.900167465209961,
+        "mean": 1.2865043384730817,
+        "median": 1.2832539081573486,
+        "p90": 1.5492205977439881,
+        "sum": 2573.008676946163
+      },
+      "per_frame_depth_max_m": {
+        "count": 2000,
+        "min": 2.482961654663086,
+        "max": 6.006399631500244,
+        "mean": 4.870252880573273,
+        "median": 4.8855226039886475,
+        "p90": 5.618236780166626,
+        "sum": 9740.505761146545
+      },
+      "depth_factor": 6553.5,
+      "png_max_depth_m": 10.0,
+      "camera": {
+        "fx": 600.0,
+        "fy": 600.0,
+        "cx": 599.5,
+        "cy": 339.5,
+        "width": 1200,
+        "height": 680,
+        "K": [
+          [
+            600.0,
+            0.0,
+            599.5
+          ],
+          [
+            0.0,
+            600.0,
+            339.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "preprocessing_variants": [
+        {
+          "frames": 2000,
+          "metric_scale": 0.8317646280924479,
+          "processed_intrinsics": [
+            [
+              251.99998474121094,
+              0.0,
+              251.7899932861328
+            ],
+            [
+              0.0,
+              247.05880737304688,
+              139.7941131591797
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "processed_shape": [
+            280,
+            504
+          ]
+        }
+      ],
+      "sessions": [
+        {
+          "sequence": "replica_room0",
+          "session_id": "85cc81d596ae48e8afa9c7892f44c57a",
+          "started_utc": "2026-11-02T04:57:22.529560+00:00",
+          "finished_utc": null,
+          "finish_recorded": false,
+          "last_committed_png_mtime_utc": "2026-11-02T05:24:13.450034+00:00",
+          "observed_end_utc": "2026-11-02T05:24:13.450034+00:00",
+          "wall_seconds": null,
+          "observed_wall_seconds_to_last_output_if_unfinished": 1610.920474,
+          "committed_frames": 539,
+          "manifest_new_frames": 539,
+          "inference_seconds": 1465.644202056923,
+          "warmup_seconds": 2.862513657004456,
+          "runtime": {
+            "python": "3.10.12",
+            "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+            "torch": "2.14.1+cpu",
+            "torch_cuda": null,
+            "device": "cpu",
+            "cpu_threads": 6
+          },
+          "frame_indices": [
+            0,
+            538
+          ],
+          "observed_other_wall_seconds": 142.4137582860726
+        },
+        {
+          "sequence": "replica_room0",
+          "session_id": "772f5312a7df41e3a387fa4ce8e0a58d",
+          "started_utc": "2026-11-02T17:02:51.691149+00:00",
+          "finished_utc": "2026-11-02T18:26:27.205182+00:00",
+          "finish_recorded": true,
+          "last_committed_png_mtime_utc": "2026-11-02T18:26:27.117966+00:00",
+          "observed_end_utc": "2026-11-02T18:26:27.205182+00:00",
+          "wall_seconds": 5015.514033,
+          "observed_wall_seconds_to_last_output_if_unfinished": 5015.514033,
+          "committed_frames": 1461,
+          "manifest_new_frames": 1461,
+          "inference_seconds": 4499.107666705013,
+          "warmup_seconds": 2.5545001770000226,
+          "runtime": {
+            "python": "3.10.12",
+            "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+            "torch": "2.14.1+cpu",
+            "torch_cuda": null,
+            "device": "cpu",
+            "cpu_threads": 6
+          },
+          "frame_indices": [
+            539,
+            1999
+          ],
+          "observed_other_wall_seconds": 513.8518661179875
+        }
+      ],
+      "inter_session_gaps": [
+        {
+          "previous_session": "85cc81d596ae48e8afa9c7892f44c57a",
+          "next_session": "772f5312a7df41e3a387fa4ce8e0a58d",
+          "from_utc": "2026-11-02T05:24:13.450034+00:00",
+          "to_utc": "2026-11-02T17:02:51.691149+00:00",
+          "observed_gap_seconds": 41918.241115,
+          "exact_downtime_known": false,
+          "scope": "Gap between recorded sessions; interrupted previous session uses last output file mtime, so exact suspension/down time is unknown."
+        }
+      ],
+      "session_count": 2,
+      "warmup_seconds": 5.417013834004479,
+      "observed_active_pipeline_wall_seconds": 6626.434507,
+      "observed_interruption_interval_seconds": 41918.241115,
+      "timing_scope": "synchronized preprocessing + network + native metric postprocessing; excludes RGB IO, source hashing, cache serialization and model setup",
+      "integrity_passed": true
+    }
+  },
+  "notes": [
+    "All committed NPY/PNG and source RGB files were SHA256 checked against their manifests. NPY native float32 headers and exact byte lengths plus PNG16 grayscale IHDR native dimensions were checked; this audit does not independently decode every PNG or recompute every pixel statistic.",
+    "Depth extrema and invalid/overflow fractions are committed runner metadata; independent GT accuracy evaluation is a separate analysis. KITTI has no supplied depth ground truth; DA3 sky postprocessing can affect maxima.",
+    "Frame inference timing excludes warmup, RGB I/O/hashing, file writes, cache validation and initial model construction. A resumed validation-only pass can update manifest updated_utc long after inference finished; session timestamps define computation periods.",
+    "One interrupted Replica session has no finish timestamp. Its last committed PNG modification time estimates the end of observed work. The gap until resume includes suspension, shutdown and/or pre-session work; exact downtime cannot be recovered from the manifest alone.",
+    "Observed pipeline wall sum includes warmup and I/O between frames. It excludes the long interrupted gap; the unfinished first Replica session is censored at its last output write."
+  ],
+  "status": "passed",
+  "passed": true,
+  "error_count": 0,
+  "checked_files": {
+    "npy": 5686,
+    "png": 5686,
+    "source_rgb": 5686,
+    "total": 17058
+  },
+  "complete_counts": {
+    "kitti06": 1101,
+    "tum_fr3": 2585,
+    "replica_room0": 2000
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-02T18:36:15.860702+00:00",
+  "arguments": [
+    "--all",
+    "--pred-root",
+    "depth_maps/da3_metric_large_cpu_float32",
+    "--data-root",
+    "../data",
+    "--output",
+    "results/tables/da3/full_cpu_float32/table2_keypoints.csv",
+    "--keypoints-root",
+    "results/keypoints/da3_cpu_float32"
+  ],
+  "expected_frames": 5686,
+  "stride": 1,
+  "nfeatures_requested": 2000,
+  "patch_radius": 3,
+  "opencv_threads": 1,
+  "math_thread_environment": {
+    "OMP_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2"
+  },
+  "limitations": [
+    "OpenCV ORB diagnostic points do not claim to match saved SLAM detector/keypoints.",
+    "Local-patch sigma is a depth-dependent/local-dispersion heuristic, not calibrated posterior uncertainty.",
+    "No paired triangulated map observations supplied: map scale remains unavailable.",
+    "KITTI has no supplied depth ground truth; TUM errors exclude invalid GT and use nearest timestamp matches within 20ms."
+  ],
+  "error": "KeyboardInterrupt: ",
+  "finished_utc": "2026-11-02T18:43:48.239077+00:00",
+  "elapsed_seconds": 469.14756696399996
+}

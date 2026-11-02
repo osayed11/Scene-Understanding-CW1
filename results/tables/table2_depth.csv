@@ -1,0 +1,3 @@
+sequence,comparison,status,frames_total,frames_selected,frames_with_gt,frames_without_gt,frames_missing_predictions,frames_scored,frames_no_valid_pixels,valid_gt_pixels,valid_pixels,prediction_coverage,abs_rel,rmse_m,delta1,scale_mean,scale_median,scale_std,min_depth_m,max_depth_m,aggregation
+replica_room0,raw,ok,2000,3,3,0,0,3,0,2447994,2447994,1.0,0.03159439932217197,0.11313415699350371,0.9998839866097161,1.0,1.0,0.0,0.001,,mean_per_frame
+replica_room0,median_scaled,ok,2000,3,3,0,0,3,0,2447994,2447994,1.0,0.026914292889502988,0.08085991191791665,0.9998941990510448,0.9842574550303175,0.9826882180278385,0.0052075314885272565,0.001,,mean_per_frame

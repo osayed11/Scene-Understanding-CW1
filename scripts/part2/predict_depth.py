@@ -29,7 +29,8 @@ from part2.common import SEQUENCES, load_camera, load_frame_records
 class DepthProPredictor:
     """Adapter for Apple's public metric-depth API; RGB input, calibrated focal length."""
 
-    def __init__(self, checkpoint: Path, device: str, source_root: Path | None = None):
+    def __init__(self, checkpoint: Path, device: str, source_root: Path | None = None,
+                 precision: str = "float32"):
         if source_root is not None:
             sys.path.insert(0, str(source_root / "src"))
         try:
@@ -43,9 +44,15 @@ class DepthProPredictor:
             ) from exc
         self.torch = torch
         self.device = torch.device(device)
+        if precision not in ("float32", "float16"):
+            raise ValueError("Depth Pro precision must be float32 or float16")
+        if precision == "float16" and self.device.type != "cuda":
+            raise ValueError("Depth Pro float16 comparison requires CUDA; use float32 on CPU")
+        self.precision = precision
+        dtype = torch.float16 if precision == "float16" else torch.float32
         cfg = replace(DEFAULT_MONODEPTH_CONFIG_DICT, checkpoint_uri=str(checkpoint))
         self.model, self.transform = depth_pro.create_model_and_transforms(
-            config=cfg, device=self.device, precision=torch.float32)
+            config=cfg, device=self.device, precision=dtype)
         self.model.eval()
 
     def synchronize(self):
@@ -172,6 +179,7 @@ def main():
     parser.add_argument("--pyslam-root", type=Path,
                         default=Path(os.environ.get("CW1_PYSLAM_ROOT", str(PYSLAM))))
     parser.add_argument("--device", default="cpu")
+    parser.add_argument("--precision", choices=("float32", "float16"), default="float32")
     parser.add_argument("--stride", type=int, default=1)
     parser.add_argument("--max-frames", type=int)
     parser.add_argument("--png-overflow", choices=("raise", "invalid"), default="invalid")
@@ -198,8 +206,9 @@ def main():
         parser.error(f"Checkpoint not found: {checkpoint}. Install models-depth in the course depth-cpu "
                      "environment, or pass --checkpoint. Use --dry-run to check input data first.")
     identity = {"model": "depth_pro", "checkpoint_sha256": checkpoint_hash(checkpoint),
-                "device": args.device, "precision": "float32", "input_color": "RGB"}
-    predictor = DepthProPredictor(checkpoint.resolve(), args.device, source_root if source_root.is_dir() else None)
+                "device": args.device, "precision": args.precision, "input_color": "RGB"}
+    predictor = DepthProPredictor(checkpoint.resolve(), args.device, source_root if source_root.is_dir() else None,
+                                  precision=args.precision)
     for sequence in sequences:
         predict_sequence(sequence, predictor, identity, data_root=args.data_root, pred_root=args.pred_root,
                          stride=args.stride, max_frames=args.max_frames, overwrite=args.overwrite,

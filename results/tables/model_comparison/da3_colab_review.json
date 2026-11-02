@@ -1,0 +1,254 @@
+{
+  "source_archive": "C:/Users/adria/Downloads/da3_gpu_smoke_results.zip",
+  "source_archive_sha256": "19ccb67a3e827d16b6231e2b7ec7fd5b1dc178322c6135972eec741eaa8ca92c",
+  "cases": {
+    "float32": {
+      "gpu": "Tesla T4",
+      "frames_ok": 9,
+      "sequence_summaries": {
+        "replica_room0": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 0,
+          "frames_with_gt": 3,
+          "mean_inference_seconds": 0.19452940366674434,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.033188261917744516,
+            "rmse_m": 0.13220833724877726,
+            "delta1": 0.9979603545501959,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.020068174161985475,
+            "rmse_m": 0.09012207617724328,
+            "delta1": 0.9978663973280829,
+            "scale": 1.0221795558424016,
+            "prediction_coverage": 1.0
+          }
+        },
+        "tum_fr3": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 0,
+          "frames_with_gt": 3,
+          "mean_inference_seconds": 0.4878253826666423,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.09646208590875129,
+            "rmse_m": 0.3101153418661175,
+            "delta1": 0.9313626617767321,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.04597400912826924,
+            "rmse_m": 0.2329563665592349,
+            "delta1": 0.9830344161423135,
+            "scale": 1.0829471616438802,
+            "prediction_coverage": 1.0
+          }
+        },
+        "kitti06": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 3,
+          "frames_with_gt": 0,
+          "mean_inference_seconds": 0.11877244099999491,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": null,
+            "rmse_m": null,
+            "delta1": null,
+            "scale": null,
+            "prediction_coverage": null
+          },
+          "median_scaled": {
+            "abs_rel": null,
+            "rmse_m": null,
+            "delta1": null,
+            "scale": null,
+            "prediction_coverage": null
+          }
+        },
+        "overall": {
+          "frames_requested": 9,
+          "frames_ok": 9,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 3,
+          "frames_with_gt": 6,
+          "mean_inference_seconds": 0.2670424091111272,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.0648251739132479,
+            "rmse_m": 0.22116183955744737,
+            "delta1": 0.9646615081634641,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.03302109164512736,
+            "rmse_m": 0.1615392213682391,
+            "delta1": 0.9904504067351981,
+            "scale": 1.0525633587431409,
+            "prediction_coverage": 1.0
+          }
+        }
+      },
+      "estimated_minutes_by_sequence": {
+        "replica_room0": 6.484313455558145,
+        "tum_fr3": 21.01714356988784,
+        "kitti06": 2.179474292349907
+      },
+      "estimated_full_minutes": 29.68093131779589
+    },
+    "float16": {
+      "gpu": "Tesla T4",
+      "frames_ok": 9,
+      "sequence_summaries": {
+        "replica_room0": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 0,
+          "frames_with_gt": 3,
+          "mean_inference_seconds": 0.11501489566671808,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.0332917697086811,
+            "rmse_m": 0.1325611108412638,
+            "delta1": 0.9979611715616827,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.020065133428955214,
+            "rmse_m": 0.090124899709305,
+            "delta1": 0.997868439865811,
+            "scale": 1.0223477665188387,
+            "prediction_coverage": 1.0
+          }
+        },
+        "tum_fr3": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 0,
+          "frames_with_gt": 3,
+          "mean_inference_seconds": 0.16505886266660733,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.09646663260115201,
+            "rmse_m": 0.31001511534777465,
+            "delta1": 0.9317487621699415,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.045946767627221864,
+            "rmse_m": 0.23283821008761355,
+            "delta1": 0.9830717828291377,
+            "scale": 1.082901850961921,
+            "prediction_coverage": 1.0
+          }
+        },
+        "kitti06": {
+          "frames_requested": 3,
+          "frames_ok": 3,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 3,
+          "frames_with_gt": 0,
+          "mean_inference_seconds": 0.056717995666607145,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": null,
+            "rmse_m": null,
+            "delta1": null,
+            "scale": null,
+            "prediction_coverage": null
+          },
+          "median_scaled": {
+            "abs_rel": null,
+            "rmse_m": null,
+            "delta1": null,
+            "scale": null,
+            "prediction_coverage": null
+          }
+        },
+        "overall": {
+          "frames_requested": 9,
+          "frames_ok": 9,
+          "frames_failed": 0,
+          "frames_pending": 0,
+          "frames_no_gt": 3,
+          "frames_with_gt": 6,
+          "mean_inference_seconds": 0.11226391799997752,
+          "aggregation": "mean_per_frame",
+          "raw": {
+            "abs_rel": 0.06487920115491656,
+            "rmse_m": 0.22128811309451923,
+            "delta1": 0.9648549668658122,
+            "scale": 1.0,
+            "prediction_coverage": 1.0
+          },
+          "median_scaled": {
+            "abs_rel": 0.033005950528088544,
+            "rmse_m": 0.16148155489845925,
+            "delta1": 0.9904701113474744,
+            "scale": 1.05262480874038,
+            "prediction_coverage": 1.0
+          }
+        }
+      },
+      "estimated_minutes_by_sequence": {
+        "replica_room0": 3.833829855557269,
+        "tum_fr3": 7.1112859998863325,
+        "kitti06": 1.0407752204822411
+      },
+      "estimated_full_minutes": 11.985891075925842
+    }
+  },
+  "precision_differences": {
+    "replica_room0": {
+      "mean_absolute_m": 0.0005288895918056369,
+      "p99_absolute_m": 0.0013909339904785156,
+      "max_absolute_m": 0.009852886199951172,
+      "pixels_above_1m": 0,
+      "fraction_above_1m": 0.0
+    },
+    "tum_fr3": {
+      "mean_absolute_m": 0.00034041525213979185,
+      "p99_absolute_m": 0.002291440963745117,
+      "max_absolute_m": 0.015205860137939453,
+      "pixels_above_1m": 0,
+      "fraction_above_1m": 0.0
+    },
+    "kitti06": {
+      "mean_absolute_m": 0.006483700126409531,
+      "p99_absolute_m": 0.0428314208984375,
+      "max_absolute_m": 28.67148208618164,
+      "pixels_above_1m": 62,
+      "fraction_above_1m": 4.555942565730494e-05
+    }
+  },
+  "limitations": [
+    "Three frames per sequence; estimates exclude image reads, saving, GT scoring, setup and transfers.",
+    "Only the first Replica resolution receives a separate warmup; the first TUM frame includes resolution-specific initialization.",
+    "KITTI has no supplied depth GT; FP16 and FP32 show rare large differences at outdoor boundaries.",
+    "Imported benchmark JSON retains the original Colab paths; prediction arrays remain in the source ZIP."
+  ],
+  "zip_crc_ok": true,
+  "fp16_speedup_vs_gpu_fp32": 2.476322463618184,
+  "fp16_speedup_vs_cpu_fp32": 19.354730574648187
+}

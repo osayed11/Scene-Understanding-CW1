@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "sequence": "kitti06",
+  "scope": "manifest_metadata_only",
+  "source_manifest": "depth_maps/da3_metric_large_cpu_float32/kitti06/manifest.json",
+  "source_manifest_sha256": "5d20911d3bd9eb82ebc9bac9b22ce4d3c84aced12dd052c591019cf615261f8f",
+  "completeness": {
+    "status": "complete",
+    "full_complete": true,
+    "declared_full_count": 1101,
+    "committed_frames": 1101,
+    "all_indices_complete": true,
+    "missing_indices": [],
+    "duplicate_indices": [],
+    "first_index": 0,
+    "last_index": 1100,
+    "pending": null
+  },
+  "depth": {
+    "global_min_m": 1.2555434703826904,
+    "global_max_m": 157.15834045410156,
+    "per_frame_depth_min_m": {
+      "count": 1101,
+      "min": 1.2555434703826904,
+      "max": 4.036412715911865,
+      "mean": 2.948946672282795,
+      "median": 3.098729133605957,
+      "p90": 3.4037954807281494
+    },
+    "per_frame_depth_max_m": {
+      "count": 1101,
+      "min": 26.160049438476562,
+      "max": 157.15834045410156,
+      "mean": 103.44776361103386,
+      "median": 106.20147705078125,
+      "p90": 128.21095275878906
+    },
+    "invalid_fraction": {
+      "count": 1101,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "p90": 0.0
+    },
+    "png_overflow_fraction": {
+      "count": 1101,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "p90": 0.0
+    },
+    "frames_with_any_invalid": 0,
+    "frames_with_any_png_overflow": 0,
+    "png_depth_factor": 256.0,
+    "png_representable_max_m": 255.99609375,
+    "frames_with_max_over_m": {
+      "80": 943,
+      "100": 685,
+      "150": 5,
+      "200": 0
+    }
+  },
+  "timing": {
+    "inference_seconds": {
+      "count": 1101,
+      "min": 1.4303847440023674,
+      "max": 5.145268314008717,
+      "mean": 1.8030300544730606,
+      "median": 1.6294304670009296,
+      "p90": 2.2500778089888627
+    },
+    "total_inference_seconds_excluding_warmup": 1985.1360899748397,
+    "total_warmup_seconds": 1.8168482530018082,
+    "recorded_session_wall_seconds": 2334.692087,
+    "recorded_session_overhead_excluding_warmup_seconds": 347.7391487721584,
+    "source_sequence_duration_seconds": 114.2943,
+    "recorded_session_wall_to_source_duration_ratio": 20.427021181283752,
+    "inference_frames_per_second": 0.5546219251970551,
+    "recorded_session_frames_per_second": 0.47158252950381463,
+    "sessions": [
+      {
+        "session_id": "f30819722c864355af7f64c165bbb736",
+        "started_utc": "2026-11-02T01:08:11.025986+00:00",
+        "finished_utc": "2026-11-02T01:47:05.718073+00:00",
+        "frames_committed": 1101,
+        "new_frames_recorded": 1101,
+        "wall_seconds": 2334.692087,
+        "warmup_seconds": 1.8168482530018082,
+        "inference_seconds_sum": 1985.1360899748397,
+        "other_wall_seconds": 347.7391487721584,
+        "runtime": {
+          "python": "3.10.12",
+          "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+          "torch": "2.14.1+cpu",
+          "torch_cuda": null,
+          "device": "cpu",
+          "cpu_threads": 6
+        },
+        "timing_scope": "synchronized preprocessing + network + native metric postprocessing; excludes RGB IO and cache writes"
+      }
+    ]
+  },
+  "calibration": {
+    "fx": 707.0912,
+    "fy": 707.0912,
+    "cx": 601.8873,
+    "cy": 183.1104,
+    "width": 1226,
+    "height": 370,
+    "K": [
+      [
+        707.0912,
+        0.0,
+        601.8873
+      ],
+      [
+        0.0,
+        707.0912,
+        183.1104
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "preprocessing": {
+    "process_res": 504,
+    "resize_policy": "upper_bound_resize",
+    "processed_shapes": [
+      {
+        "height": 154,
+        "width": 504,
+        "frames": 1101
+      }
+    ],
+    "metric_scale": {
+      "count": 1101,
+      "min": 0.9749717203776042,
+      "max": 0.9749717203776042,
+      "mean": 0.9749717203776042,
+      "median": 0.9749717203776042,
+      "p90": 0.9749717203776042
+    },
+    "first_processed_intrinsics": [
+      [
+        290.68023681640625,
+        0.0,
+        247.43167114257812
+      ],
+      [
+        0.0,
+        294.30279541015625,
+        76.21351623535156
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "visualization_candidates": {
+    "largest_frame_depth_max": [
+      {
+        "index": 451,
+        "stem": "000451",
+        "timestamp": 46.88028,
+        "inference_seconds": 1.5294208359991899,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.20234751701355,
+        "depth_max_m": 157.15834045410156
+      },
+      {
+        "index": 452,
+        "stem": "000452",
+        "timestamp": 46.98429,
+        "inference_seconds": 1.4303847440023674,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.0466115474700928,
+        "depth_max_m": 153.28775024414062
+      },
+      {
+        "index": 454,
+        "stem": "000454",
+        "timestamp": 47.19229,
+        "inference_seconds": 1.4987072289950447,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.1531083583831787,
+        "depth_max_m": 153.04176330566406
+      },
+      {
+        "index": 455,
+        "stem": "000455",
+        "timestamp": 47.29629,
+        "inference_seconds": 1.489587552001467,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.1429457664489746,
+        "depth_max_m": 152.9755859375
+      },
+      {
+        "index": 456,
+        "stem": "000456",
+        "timestamp": 47.40028,
+        "inference_seconds": 1.5555847770010587,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.145949602127075,
+        "depth_max_m": 152.7808380126953
+      },
+      {
+        "index": 457,
+        "stem": "000457",
+        "timestamp": 47.50441,
+        "inference_seconds": 1.568860756000504,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.1622557640075684,
+        "depth_max_m": 147.72103881835938
+      },
+      {
+        "index": 445,
+        "stem": "000445",
+        "timestamp": 46.25628,
+        "inference_seconds": 2.1416664690041216,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.0916497707366943,
+        "depth_max_m": 146.98980712890625
+      },
+      {
+        "index": 453,
+        "stem": "000453",
+        "timestamp": 47.08828,
+        "inference_seconds": 1.6317224859958515,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.1981804370880127,
+        "depth_max_m": 146.59085083007812
+      },
+      {
+        "index": 458,
+        "stem": "000458",
+        "timestamp": 47.60841,
+        "inference_seconds": 1.7758097399928374,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.406872034072876,
+        "depth_max_m": 146.5348663330078
+      },
+      {
+        "index": 447,
+        "stem": "000447",
+        "timestamp": 46.4643,
+        "inference_seconds": 1.5342498310055817,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.063446521759033,
+        "depth_max_m": 146.35650634765625
+      }
+    ],
+    "highest_invalid_fraction": [],
+    "highest_png_overflow_fraction": [],
+    "slowest_inference": [
+      {
+        "index": 312,
+        "stem": "000312",
+        "timestamp": 32.43543,
+        "inference_seconds": 5.145268314008717,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.6332075595855713,
+        "depth_max_m": 33.09303283691406
+      },
+      {
+        "index": 483,
+        "stem": "000483",
+        "timestamp": 50.20854,
+        "inference_seconds": 4.376227890999871,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 2.9388716220855713,
+        "depth_max_m": 142.11912536621094
+      },
+      {
+        "index": 336,
+        "stem": "000336",
+        "timestamp": 34.93578,
+        "inference_seconds": 4.268130366996047,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.088714599609375,
+        "depth_max_m": 122.4677505493164
+      },
+      {
+        "index": 348,
+        "stem": "000348",
+        "timestamp": 36.18665,
+        "inference_seconds": 4.199874637997709,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.2319860458374023,
+        "depth_max_m": 125.41152954101562
+      },
+      {
+        "index": 44,
+        "stem": "000044",
+        "timestamp": 4.572617,
+        "inference_seconds": 4.016724275003071,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.2371087074279785,
+        "depth_max_m": 87.49694061279297
+      }
+    ],
+    "smallest_frame_depth_max": [
+      {
+        "index": 308,
+        "stem": "000308",
+        "timestamp": 32.0194,
+        "inference_seconds": 1.6888369609951042,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.6639819145202637,
+        "depth_max_m": 26.160049438476562
+      },
+      {
+        "index": 309,
+        "stem": "000309",
+        "timestamp": 32.12329,
+        "inference_seconds": 1.7373517809901386,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.6305465698242188,
+        "depth_max_m": 27.719751358032227
+      },
+      {
+        "index": 307,
+        "stem": "000307",
+        "timestamp": 31.91552,
+        "inference_seconds": 2.1271216180030024,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.70060133934021,
+        "depth_max_m": 28.05384063720703
+      },
+      {
+        "index": 310,
+        "stem": "000310",
+        "timestamp": 32.2273,
+        "inference_seconds": 1.7349419649981428,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.601994037628174,
+        "depth_max_m": 30.03427505493164
+      },
+      {
+        "index": 305,
+        "stem": "000305",
+        "timestamp": 31.70781,
+        "inference_seconds": 2.002183894001064,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 3.685269355773926,
+        "depth_max_m": 30.955842971801758
+      }
+    ],
+    "smallest_frame_depth_min": [
+      {
+        "index": 1027,
+        "stem": "001027",
+        "timestamp": 106.7031,
+        "inference_seconds": 1.6029588099918328,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 1.2555434703826904,
+        "depth_max_m": 87.94136810302734
+      },
+      {
+        "index": 71,
+        "stem": "000071",
+        "timestamp": 7.379122,
+        "inference_seconds": 2.745070664997911,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 1.3092041015625,
+        "depth_max_m": 88.65232849121094
+      },
+      {
+        "index": 900,
+        "stem": "000900",
+        "timestamp": 93.51545,
+        "inference_seconds": 1.579851670001517,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 1.3896758556365967,
+        "depth_max_m": 94.80834197998047
+      },
+      {
+        "index": 207,
+        "stem": "000207",
+        "timestamp": 21.52188,
+        "inference_seconds": 1.942012864004937,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 1.396629810333252,
+        "depth_max_m": 91.84371948242188
+      },
+      {
+        "index": 205,
+        "stem": "000205",
+        "timestamp": 21.31376,
+        "inference_seconds": 1.993762266007252,
+        "invalid_fraction": 0.0,
+        "png_overflow_fraction": 0.0,
+        "depth_min_m": 1.4522393941879272,
+        "depth_max_m": 93.71981048583984
+      }
+    ]
+  },
+  "notes": [
+    "KITTI06 has no supplied depth ground truth: no depth accuracy or validated usable-range claim is made.",
+    "Frame depth extrema summarize predicted maps; the maximum may include artificial sky depths assigned by the DA3 sky postprocessing, rather than physical objects.",
+    "Zero invalid/overflow fractions describe finite-positive/encoding coverage, not correctness.",
+    "Inference timings exclude RGB reads, writes, hashing and other cache work; warmup is recorded separately.",
+    "Recorded session wall time excludes earlier model initialization and any pre-session input/cache preflight.",
+    "This diagnostic reads only the committed manifest; canonical NPY/PNG files were not scanned, rehashed or modified."
+  ]
+}

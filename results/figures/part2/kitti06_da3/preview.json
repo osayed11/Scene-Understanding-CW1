@@ -1,0 +1,829 @@
+{
+  "sequence": "kitti06",
+  "model": "da3_metric_large",
+  "cache": "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/depth_maps/da3_metric_large_cpu_float32/kitti06",
+  "source": "cached NPY predictions; no network inference",
+  "sampling": "every Nth source frame, original identities retained",
+  "stride": 10,
+  "sample_count": 111,
+  "fps": 5,
+  "duration_seconds": 22.2,
+  "source_span_seconds": 114.2943,
+  "approximate_time_compression": 5.148391891891892,
+  "dimensions": [
+    768,
+    560
+  ],
+  "codec": "MPEG-4 Part 2/mp4v",
+  "video": "preview.mp4",
+  "gif": "preview.gif",
+  "browser_note": "Use GIF in browsers if MPEG-4 Part 2 playback is unavailable",
+  "display_depth_range_metres": [
+    0,
+    80
+  ],
+  "display_clipping_only": true,
+  "invalid_color": "gray",
+  "first_sample": {
+    "index": 0,
+    "timestamp": 0.0,
+    "stem": "000000",
+    "valid_fraction": 1.0,
+    "fraction_above_display_cap": 0.0028173360962920504
+  },
+  "last_sample": {
+    "index": 1100,
+    "timestamp": 114.2943,
+    "stem": "001100",
+    "valid_fraction": 1.0,
+    "fraction_above_display_cap": 0.002237555663330541
+  },
+  "samples": [
+    {
+      "index": 0,
+      "timestamp": 0.0,
+      "stem": "000000",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0028173360962920504
+    },
+    {
+      "index": 10,
+      "timestamp": 1.038877,
+      "stem": "000010",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.003282483135664212
+    },
+    {
+      "index": 20,
+      "timestamp": 2.077874,
+      "stem": "000020",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0021978748732419204
+    },
+    {
+      "index": 30,
+      "timestamp": 3.117132,
+      "stem": "000030",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0022992813368017282
+    },
+    {
+      "index": 40,
+      "timestamp": 4.156747,
+      "stem": "000040",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0004453066443278515
+    },
+    {
+      "index": 50,
+      "timestamp": 5.195994,
+      "stem": "000050",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0021581940831533
+    },
+    {
+      "index": 60,
+      "timestamp": 6.235244,
+      "stem": "000060",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0005665535029319695
+    },
+    {
+      "index": 70,
+      "timestamp": 7.275124,
+      "stem": "000070",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00024469820554649265
+    },
+    {
+      "index": 80,
+      "timestamp": 8.315124,
+      "stem": "000080",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.19235703893126405
+    },
+    {
+      "index": 90,
+      "timestamp": 9.355001,
+      "stem": "000090",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.21740002645386006
+    },
+    {
+      "index": 100,
+      "timestamp": 10.39463,
+      "stem": "000100",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.2113927957321106
+    },
+    {
+      "index": 110,
+      "timestamp": 11.43462,
+      "stem": "000110",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.18574577840483225
+    },
+    {
+      "index": 120,
+      "timestamp": 12.47437,
+      "stem": "000120",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.18806049116000176
+    },
+    {
+      "index": 130,
+      "timestamp": 13.51401,
+      "stem": "000130",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.17114765662889644
+    },
+    {
+      "index": 140,
+      "timestamp": 14.55363,
+      "stem": "000140",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005136457828138089
+    },
+    {
+      "index": 150,
+      "timestamp": 15.59313,
+      "stem": "000150",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0026696353776288523
+    },
+    {
+      "index": 160,
+      "timestamp": 16.63288,
+      "stem": "000160",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0030906926502358802
+    },
+    {
+      "index": 170,
+      "timestamp": 17.67276,
+      "stem": "000170",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0049424628543715005
+    },
+    {
+      "index": 180,
+      "timestamp": 18.71251,
+      "stem": "000180",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00433622856135091
+    },
+    {
+      "index": 190,
+      "timestamp": 19.75263,
+      "stem": "000190",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0017900445306644327
+    },
+    {
+      "index": 200,
+      "timestamp": 20.79338,
+      "stem": "000200",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0028393809796746173
+    },
+    {
+      "index": 210,
+      "timestamp": 21.83414,
+      "stem": "000210",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 220,
+      "timestamp": 22.87476,
+      "stem": "000220",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 230,
+      "timestamp": 23.91526,
+      "stem": "000230",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0007649574533750717
+    },
+    {
+      "index": 240,
+      "timestamp": 24.95576,
+      "stem": "000240",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 250,
+      "timestamp": 25.99552,
+      "stem": "000250",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 260,
+      "timestamp": 27.03514,
+      "stem": "000260",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 270,
+      "timestamp": 28.07541,
+      "stem": "000270",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005663330540981438
+    },
+    {
+      "index": 280,
+      "timestamp": 29.11351,
+      "stem": "000280",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.006904457475419955
+    },
+    {
+      "index": 290,
+      "timestamp": 30.15089,
+      "stem": "000290",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 300,
+      "timestamp": 31.18864,
+      "stem": "000300",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 310,
+      "timestamp": 32.2273,
+      "stem": "000310",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 320,
+      "timestamp": 33.26902,
+      "stem": "000320",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0028173360962920504
+    },
+    {
+      "index": 330,
+      "timestamp": 34.31077,
+      "stem": "000330",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.004490542745028879
+    },
+    {
+      "index": 340,
+      "timestamp": 35.35265,
+      "stem": "000340",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.006313654600767162
+    },
+    {
+      "index": 350,
+      "timestamp": 36.39503,
+      "stem": "000350",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005850712049733257
+    },
+    {
+      "index": 360,
+      "timestamp": 37.43515,
+      "stem": "000360",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005418632335434946
+    },
+    {
+      "index": 370,
+      "timestamp": 38.47328,
+      "stem": "000370",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0060667519068824125
+    },
+    {
+      "index": 380,
+      "timestamp": 39.51103,
+      "stem": "000380",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.008092676689740312
+    },
+    {
+      "index": 390,
+      "timestamp": 40.54828,
+      "stem": "000390",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.19803359640227503
+    },
+    {
+      "index": 400,
+      "timestamp": 41.58591,
+      "stem": "000400",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.13339799832458887
+    },
+    {
+      "index": 410,
+      "timestamp": 42.62366,
+      "stem": "000410",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 420,
+      "timestamp": 43.66103,
+      "stem": "000420",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.13508443190335523
+    },
+    {
+      "index": 430,
+      "timestamp": 44.69828,
+      "stem": "000430",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.15145937127992593
+    },
+    {
+      "index": 440,
+      "timestamp": 45.73666,
+      "stem": "000440",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.18531149420219567
+    },
+    {
+      "index": 450,
+      "timestamp": 46.7763,
+      "stem": "000450",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.19131211145893037
+    },
+    {
+      "index": 460,
+      "timestamp": 47.81641,
+      "stem": "000460",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.2202834972002998
+    },
+    {
+      "index": 470,
+      "timestamp": 48.85641,
+      "stem": "000470",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.007418103258233764
+    },
+    {
+      "index": 480,
+      "timestamp": 49.89654,
+      "stem": "000480",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0070565671707596665
+    },
+    {
+      "index": 490,
+      "timestamp": 50.93679,
+      "stem": "000490",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.008813544376350249
+    },
+    {
+      "index": 500,
+      "timestamp": 51.97679,
+      "stem": "000500",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.006719280455006393
+    },
+    {
+      "index": 510,
+      "timestamp": 53.01642,
+      "stem": "000510",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.004054054054054054
+    },
+    {
+      "index": 520,
+      "timestamp": 54.05492,
+      "stem": "000520",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1454080507914113
+    },
+    {
+      "index": 530,
+      "timestamp": 55.09292,
+      "stem": "000530",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.13608526960892378
+    },
+    {
+      "index": 540,
+      "timestamp": 56.13092,
+      "stem": "000540",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.15652308099290155
+    },
+    {
+      "index": 550,
+      "timestamp": 57.16854,
+      "stem": "000550",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1645672589392002
+    },
+    {
+      "index": 560,
+      "timestamp": 58.20619,
+      "stem": "000560",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.17474979057360787
+    },
+    {
+      "index": 570,
+      "timestamp": 59.24417,
+      "stem": "000570",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.15218023896653587
+    },
+    {
+      "index": 580,
+      "timestamp": 60.28217,
+      "stem": "000580",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.15380715136016931
+    },
+    {
+      "index": 590,
+      "timestamp": 61.31992,
+      "stem": "000590",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.148024778448922
+    },
+    {
+      "index": 600,
+      "timestamp": 62.35767,
+      "stem": "000600",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1570345222873771
+    },
+    {
+      "index": 610,
+      "timestamp": 63.3958,
+      "stem": "000610",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1660486751025087
+    },
+    {
+      "index": 620,
+      "timestamp": 64.4338,
+      "stem": "000620",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.14303381685110886
+    },
+    {
+      "index": 630,
+      "timestamp": 65.47193,
+      "stem": "000630",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.13096203871081522
+    },
+    {
+      "index": 640,
+      "timestamp": 66.50968,
+      "stem": "000640",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.16752347780080243
+    },
+    {
+      "index": 650,
+      "timestamp": 67.54768,
+      "stem": "000650",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.13107226312772804
+    },
+    {
+      "index": 660,
+      "timestamp": 68.58593,
+      "stem": "000660",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.11857501873815088
+    },
+    {
+      "index": 670,
+      "timestamp": 69.62456,
+      "stem": "000670",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.16284334905868347
+    },
+    {
+      "index": 680,
+      "timestamp": 70.66218,
+      "stem": "000680",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1452669635377629
+    },
+    {
+      "index": 690,
+      "timestamp": 71.69881,
+      "stem": "000690",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 3.968079008862043e-05
+    },
+    {
+      "index": 700,
+      "timestamp": 72.73695,
+      "stem": "000700",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 710,
+      "timestamp": 73.77644,
+      "stem": "000710",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 720,
+      "timestamp": 74.81693,
+      "stem": "000720",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.006179180812133504
+    },
+    {
+      "index": 730,
+      "timestamp": 75.86022,
+      "stem": "000730",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0070852255191570035
+    },
+    {
+      "index": 740,
+      "timestamp": 76.90356,
+      "stem": "000740",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.006445923901062563
+    },
+    {
+      "index": 750,
+      "timestamp": 77.94421,
+      "stem": "000750",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0073387416780565234
+    },
+    {
+      "index": 760,
+      "timestamp": 78.98294,
+      "stem": "000760",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.18356553943829637
+    },
+    {
+      "index": 770,
+      "timestamp": 80.02146,
+      "stem": "000770",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.008377055685375424
+    },
+    {
+      "index": 780,
+      "timestamp": 81.05944,
+      "stem": "000780",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005663330540981438
+    },
+    {
+      "index": 790,
+      "timestamp": 82.09731,
+      "stem": "000790",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.15253736607733345
+    },
+    {
+      "index": 800,
+      "timestamp": 83.13519,
+      "stem": "000800",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0073056743529826725
+    },
+    {
+      "index": 810,
+      "timestamp": 84.17369,
+      "stem": "000810",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.001203650632688153
+    },
+    {
+      "index": 820,
+      "timestamp": 85.21245,
+      "stem": "000820",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0029187425598518582
+    },
+    {
+      "index": 830,
+      "timestamp": 86.25046,
+      "stem": "000830",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0026035007274811516
+    },
+    {
+      "index": 840,
+      "timestamp": 87.28832,
+      "stem": "000840",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0009655658921564305
+    },
+    {
+      "index": 850,
+      "timestamp": 88.32632,
+      "stem": "000850",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0012521493761298002
+    },
+    {
+      "index": 860,
+      "timestamp": 89.36432,
+      "stem": "000860",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0009809973105242274
+    },
+    {
+      "index": 870,
+      "timestamp": 90.40208,
+      "stem": "000870",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00034610466910630044
+    },
+    {
+      "index": 880,
+      "timestamp": 91.43995,
+      "stem": "000880",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0003901944358714342
+    },
+    {
+      "index": 890,
+      "timestamp": 92.47758,
+      "stem": "000890",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0027908822362329704
+    },
+    {
+      "index": 900,
+      "timestamp": 93.51545,
+      "stem": "000900",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0040055553106124065
+    },
+    {
+      "index": 910,
+      "timestamp": 94.55395,
+      "stem": "000910",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.18772540893258674
+    },
+    {
+      "index": 920,
+      "timestamp": 95.59247,
+      "stem": "000920",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.22641858824566818
+    },
+    {
+      "index": 930,
+      "timestamp": 96.63283,
+      "stem": "000930",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.21581059036197697
+    },
+    {
+      "index": 940,
+      "timestamp": 97.67221,
+      "stem": "000940",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.1968497861646312
+    },
+    {
+      "index": 950,
+      "timestamp": 98.70996,
+      "stem": "000950",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.16492879502667432
+    },
+    {
+      "index": 960,
+      "timestamp": 99.74796,
+      "stem": "000960",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.17241964640007054
+    },
+    {
+      "index": 970,
+      "timestamp": 100.7857,
+      "stem": "000970",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.14423526299545875
+    },
+    {
+      "index": 980,
+      "timestamp": 101.8236,
+      "stem": "000980",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0002755610422820863
+    },
+    {
+      "index": 990,
+      "timestamp": 102.8613,
+      "stem": "000990",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00367047308319739
+    },
+    {
+      "index": 1000,
+      "timestamp": 103.8991,
+      "stem": "001000",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.005037255852916538
+    },
+    {
+      "index": 1010,
+      "timestamp": 104.9367,
+      "stem": "001010",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00048719192275472863
+    },
+    {
+      "index": 1020,
+      "timestamp": 105.9752,
+      "stem": "001020",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00153873286010317
+    },
+    {
+      "index": 1030,
+      "timestamp": 107.0151,
+      "stem": "001030",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 1040,
+      "timestamp": 108.0548,
+      "stem": "001040",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 1050,
+      "timestamp": 109.095,
+      "stem": "001050",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 1060,
+      "timestamp": 110.135,
+      "stem": "001060",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.00031303734403245005
+    },
+    {
+      "index": 1070,
+      "timestamp": 111.1748,
+      "stem": "001070",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 1080,
+      "timestamp": 112.2146,
+      "stem": "001080",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0
+    },
+    {
+      "index": 1090,
+      "timestamp": 113.2546,
+      "stem": "001090",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.0038997398703760856
+    },
+    {
+      "index": 1100,
+      "timestamp": 114.2943,
+      "stem": "001100",
+      "valid_fraction": 1.0,
+      "fraction_above_display_cap": 0.002237555663330541
+    }
+  ],
+  "validation": {
+    "decoded_frame_count": 111,
+    "decoded_fps": 5.0,
+    "decoded_first_and_last_frames": true
+  },
+  "file_sizes_bytes": {
+    "mp4": 6124282,
+    "gif": 5195749
+  }
+}

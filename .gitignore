@@ -15,6 +15,10 @@ results/maps/
 *.png
 *.mp4
 
+# Small analysis figures are shared; raw dataset/depth PNGs remain excluded.
+!results/figures/part2/**/*.png
+!results/tables/model_comparison/comparison.png
+
 # python
 __pycache__/
 *.pyc

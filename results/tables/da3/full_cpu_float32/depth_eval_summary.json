@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "validated_utc": "2026-11-02T18:47:12.732286+00:00",
+  "method": "Full default eval_depth.main CLI through runpy; --all, stride1, no max frames, min_depth0.001m, no max depth or crop. NPY predictions from depth_maps/da3_metric_large_cpu_float32.",
+  "summary_rows": 6,
+  "per_frame_rows": 8976,
+  "aggregate_validation_errors": [],
+  "output_sha256": {
+    "table2_depth.csv": "dc5ab7f53def5e33244df5668fde69b34eb8831df5d7dd70a6bc0cc342663d77",
+    "table2_depth_frames.csv": "dca761dfe8e192b3425010de612e6f9f682d80405b7450e45941dddfb1ded28e"
+  },
+  "wrapper_note": "All scorer outputs were written successfully. The temporary stdout Tee wrapper emitted an interpreter-shutdown warning after closing its log; the CSV cohorts and numeric aggregates were checked independently, without rerunning inference or scoring."
+}

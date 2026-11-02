@@ -1,0 +1,60 @@
+Full DA3 CPU float32 cache temporal evaluation; no neural inference.
+Command equivalent: python -B scripts/part2/temporal_consistency.py --all --data-root ../data --pred-root depth_maps/da3_metric_large_cpu_float32 --frame-step 1 --pixel-stride 8 --output results/tables/da3/full_cpu_float32/table2_temporal.csv
+Threads: OMP/MKL/OPENBLAS/NUMEXPR=2; OpenCV=1; nice=10.
+Poses are evaluation-only camera-to-world; target<-source = inverse(T_world_target) @ T_world_source.
+WARNING: KITTI uses supplied cam0-reference poses with image_2 intrinsics; no supplied cam0-to-cam2 extrinsic, so KITTI is approximate.
+Preflight kitti06: 1101 frames, 1100/1100 pose pairs, 0 depth associations, grid 7238 pixels/pair.
+Preflight tum_fr3: 2585 frames, 2581/2584 pose pairs, 2488 depth associations, grid 4800 pixels/pair.
+Traceback (most recent call last):
+  File "<stdin>", line 49, in <module>
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/npyio.py", line 992, in _read
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/_datasource.py", line 193, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/home/adria/.venvs/comp0227-part2/lib/python3.10/site-packages/numpy/lib/_datasource.py", line 533, in open
+    raise FileNotFoundError(f"{path} not found.")
+FileNotFoundError: /mnt/c/Users/adria/University/Awareness/data/replica/room0/groundtruth_tum.txt not found.
+
+Restart after wrapper preflight correction: Replica converted GT is absent; the existing loader correctly falls back to raw traj.txt. No evaluator/cache change.
+Command equivalent: python -B scripts/part2/temporal_consistency.py --all --data-root ../data --pred-root depth_maps/da3_metric_large_cpu_float32 --frame-step 1 --pixel-stride 8 --output results/tables/da3/full_cpu_float32/table2_temporal.csv
+OMP/MKL/OPENBLAS/NUMEXPR=2; OpenCV=1; nice=10. All 5683 adjacent pairs; no max-pairs; no inference.
+Start kitti06: all adjacent pairs; stride 8.
+Progress kitti06: 1 evaluated pairs; 2.0s elapsed.
+Progress kitti06: 250 evaluated pairs; 11.9s elapsed.
+Progress kitti06: 500 evaluated pairs; 22.2s elapsed.
+Progress kitti06: 750 evaluated pairs; 33.4s elapsed.
+Progress kitti06: 1000 evaluated pairs; 43.4s elapsed.
+Finished kitti06 in 47.3s.
+kitti06: 1100 pairs, 5264807 visible depth comparisons
+Start tum_fr3: all adjacent pairs; stride 8.
+Progress tum_fr3: 1 evaluated pairs; 7.4s elapsed.
+Progress tum_fr3: 250 evaluated pairs; 28.6s elapsed.
+Progress tum_fr3: 500 evaluated pairs; 49.8s elapsed.
+Progress tum_fr3: 750 evaluated pairs; 70.0s elapsed.
+Progress tum_fr3: 1000 evaluated pairs; 90.2s elapsed.
+Progress tum_fr3: 1250 evaluated pairs; 109.9s elapsed.
+Progress tum_fr3: 1500 evaluated pairs; 130.5s elapsed.
+Progress tum_fr3: 1750 evaluated pairs; 150.8s elapsed.
+Progress tum_fr3: 2000 evaluated pairs; 171.8s elapsed.
+Progress tum_fr3: 2250 evaluated pairs; 192.2s elapsed.
+Progress tum_fr3: 2500 evaluated pairs; 214.3s elapsed.
+Finished tum_fr3 in 221.4s.
+tum_fr3: 2584 pairs, 9887404 visible depth comparisons
+Start replica_room0: all adjacent pairs; stride 8.
+Progress replica_room0: 1 evaluated pairs; 7.9s elapsed.
+Progress replica_room0: 250 evaluated pairs; 49.8s elapsed.
+Progress replica_room0: 500 evaluated pairs; 87.0s elapsed.
+Progress replica_room0: 750 evaluated pairs; 125.7s elapsed.
+Progress replica_room0: 1000 evaluated pairs; 167.1s elapsed.
+Progress replica_room0: 1250 evaluated pairs; 215.1s elapsed.
+Progress replica_room0: 1500 evaluated pairs; 257.6s elapsed.
+Progress replica_room0: 1750 evaluated pairs; 300.7s elapsed.
+Finished replica_room0 in 340.8s.
+replica_room0: 1999 pairs, 25180655 visible depth comparisons
+Wrote results/tables/da3/full_cpu_float32/table2_temporal.csv
+FULL EVALUATION COMPLETE: 609.7s.
+
+Temporal summary generated. CSV row counts, disjoint rejection identities, nominal coverage and finite metrics validated.
+{"kitti06": {"pairs": 1100, "status_counts": {"ok": 1100}, "compared_over_sampled": 0.6612583837825617}, "tum_fr3": {"pairs": 2584, "status_counts": {"missing_pose": 3, "ok": 2581}, "compared_over_sampled": 0.7980921477463515}, "replica_room0": {"pairs": 1999, "status_counts": {"ok": 1999}, "compared_over_sampled": 0.987970651992663}}

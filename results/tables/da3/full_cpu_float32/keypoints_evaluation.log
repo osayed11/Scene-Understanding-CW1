@@ -1,0 +1,6 @@
+{"started_utc": "2026-11-02T18:44:25.924245+00:00", "pid": 520, "arguments": ["--all", "--pred-root", "depth_maps/da3_metric_large_cpu_float32", "--data-root", "../data", "--output", "results/tables/da3/full_cpu_float32/table2_keypoints.csv", "--keypoints-root", "results/keypoints/da3_cpu_float32"], "opencv_threads": 1, "depth_helper_sha256": "980b4e2af9670b225a2896bd622b2d084c8b9c9ee79ab776c96640675b6674f7"}
+kitti06: 2201712/2201712 ORB diagnostic keypoints have depth; GT pairs=0; map scale=unavailable_no_map_samples
+tum_fr3: 4960839/4960839 ORB diagnostic keypoints have depth; GT pairs=4468466; map scale=unavailable_no_map_samples
+replica_room0: 3953368/3953368 ORB diagnostic keypoints have depth; GT pairs=3951853; map scale=unavailable_no_map_samples
+wrote results/tables/da3/full_cpu_float32/table2_keypoints.csv
+{"status": "complete", "frames_analyzed": 5686, "total_keypoints": 11115919, "elapsed_seconds": 779.5244697429999, "summary": "results/tables/da3/full_cpu_float32/keypoints_evaluation_summary.json"}

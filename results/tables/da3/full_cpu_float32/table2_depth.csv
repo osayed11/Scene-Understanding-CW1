@@ -1,0 +1,7 @@
+sequence,comparison,status,frames_total,frames_selected,frames_with_gt,frames_without_gt,frames_missing_predictions,frames_scored,frames_no_valid_pixels,valid_gt_pixels,valid_pixels,prediction_coverage,abs_rel,rmse_m,delta1,scale_mean,scale_median,scale_std,min_depth_m,max_depth_m,aggregation
+kitti06,raw,no_ground_truth,1101,1101,0,1101,0,0,0,0,0,nan,nan,nan,nan,nan,nan,nan,0.001,,mean_per_frame
+kitti06,median_scaled,no_ground_truth,1101,1101,0,1101,0,0,0,0,0,nan,nan,nan,nan,nan,nan,nan,0.001,,mean_per_frame
+tum_fr3,raw,ok,2585,2585,2488,97,0,2488,0,637196001,637196001,1.0,0.07910000068481789,0.3441433179417058,0.9505865111850172,1.0,1.0,0.0,0.001,,mean_per_frame
+tum_fr3,median_scaled,ok,2585,2585,2488,97,0,2488,0,637196001,637196001,1.0,0.054489797865415725,0.3141554808481559,0.9634068245795346,1.0356658297325256,1.03158576305358,0.058444195625854144,0.001,,mean_per_frame
+replica_room0,raw,ok,2000,2000,2000,0,0,2000,0,1631976553,1631976553,1.0,0.03964503163824828,0.140378517738762,0.9975411174752824,1.0,1.0,0.0,0.001,,mean_per_frame
+replica_room0,median_scaled,ok,2000,2000,2000,0,0,2000,0,1631976553,1631976553,1.0,0.021858689332257944,0.08976669752570018,0.997565342276524,1.0345750112380852,1.0328938225377409,0.020443670899965134,0.001,,mean_per_frame

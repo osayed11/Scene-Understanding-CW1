@@ -1,0 +1,8 @@
+START 2026-11-02T18:35:40.879816+00:00
+kitti06 raw: no_ground_truth; frames=0/1101 AbsRel=nan RMSE(m)=nan delta1=nan
+kitti06 median_scaled: no_ground_truth; frames=0/1101 AbsRel=nan RMSE(m)=nan delta1=nan
+tum_fr3 raw: ok; frames=2488/2585 AbsRel=0.0791 RMSE(m)=0.34414 delta1=0.95059
+tum_fr3 median_scaled: ok; frames=2488/2585 AbsRel=0.05449 RMSE(m)=0.31416 delta1=0.96341
+replica_room0 raw: ok; frames=2000/2000 AbsRel=0.039645 RMSE(m)=0.14038 delta1=0.99754
+replica_room0 median_scaled: ok; frames=2000/2000 AbsRel=0.021859 RMSE(m)=0.089767 delta1=0.99757
+wrote /mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/results/tables/da3/full_cpu_float32/table2_depth.csv and /mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/results/tables/da3/full_cpu_float32/table2_depth_frames.csv

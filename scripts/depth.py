@@ -89,6 +89,62 @@ def depth_at_keypoints(depth_m: np.ndarray, kps: np.ndarray, radius: int = 1):
     kps = np.asarray(kps, dtype=float).reshape(-1, 2)
     if depth_m.ndim != 2 or radius < 0 or int(radius) != radius:
         raise ValueError("Expected a 2D depth map and a nonnegative integer patch radius")
+    radius = int(radius)
+    # The evaluation caches/GT are float32. Batch their small local patches,
+    # rather than making two Python-level median calls for every keypoint.
+    # Preserve scalar promotion for less common integer/float16 input dtypes.
+    if depth_m.dtype not in (np.dtype("float32"), np.dtype("float64")):
+        return _depth_at_keypoints_scalar(depth_m, kps, radius)
+    h, w = depth_m.shape
+    d = np.full(len(kps), np.nan, dtype=np.float32)
+    sigma = np.full_like(d, np.nan)
+    selected = np.flatnonzero(np.isfinite(kps).all(axis=1)
+                              & (kps[:, 0] >= 0) & (kps[:, 0] < w)
+                              & (kps[:, 1] >= 0) & (kps[:, 1] < h))
+    if not selected.size:
+        return d, sigma
+    pixels = np.rint(kps[selected]).astype(np.int64)
+    inside = ((pixels[:, 0] >= 0) & (pixels[:, 0] < w)
+              & (pixels[:, 1] >= 0) & (pixels[:, 1] < h))
+    selected, pixels = selected[inside], pixels[inside]
+    # Scalar NumPy arithmetic promotes float32 to float64 under NumPy 1.x;
+    # NumPy 2.x keeps float32. Match the original scalar formula in either case.
+    depth_scale_dtype = np.asarray(.02 * np.float32(1)).dtype
+    if radius == 0:
+        values = depth_m[pixels[:, 1], pixels[:, 0]]
+        valid = np.isfinite(values) & (values > 0)
+        selected, values = selected[valid], values[valid]
+        d[selected] = values
+        sigma[selected] = np.maximum(.001, .02 * d[selected].astype(depth_scale_dtype))
+        return d, sigma
+    dy = np.arange(-min(radius, h - 1), min(radius, h - 1) + 1)
+    dx = np.arange(-min(radius, w - 1), min(radius, w - 1) + 1)
+    # Bound temporary patch memory, including callers requesting large radii.
+    batch_size = max(1, min(1024, 1_000_000 // (len(dy) * len(dx))))
+    for start in range(0, len(selected), batch_size):
+        ids, centers = selected[start:start + batch_size], pixels[start:start + batch_size]
+        v = centers[:, 1, None, None] + dy[None, :, None]
+        u = centers[:, 0, None, None] + dx[None, None, :]
+        border = (v >= 0) & (v < h) & (u >= 0) & (u < w)
+        patches = depth_m[np.clip(v, 0, h - 1), np.clip(u, 0, w - 1)].reshape(len(ids), -1)
+        valid = border.reshape(len(ids), -1) & np.isfinite(patches) & (patches > 0)
+        nonempty = valid.any(axis=1)
+        if not nonempty.any():
+            continue
+        ids, patches, valid = ids[nonempty], patches[nonempty], valid[nonempty]
+        median = np.nanmedian(np.where(valid, patches, np.nan), axis=1)
+        d[ids] = median  # This float32 rounding precedes MAD in the scalar version.
+        deviation = np.abs(patches - d[ids, None])
+        mad = np.nanmedian(np.where(valid, deviation, np.nan), axis=1)
+        mad_scale_dtype = np.asarray(1.4826 * mad.dtype.type(1)).dtype
+        sigma[ids] = np.maximum(.001, np.maximum(
+            .02 * d[ids].astype(depth_scale_dtype),
+            1.4826 * mad.astype(mad_scale_dtype)))
+    return d, sigma
+
+
+def _depth_at_keypoints_scalar(depth_m, kps, radius):
+    """Preserve dtype-dependent NumPy scalar arithmetic for uncommon inputs."""
     h, w = depth_m.shape
     d = np.full(len(kps), np.nan, dtype=np.float32)
     sigma = np.full_like(d, np.nan)

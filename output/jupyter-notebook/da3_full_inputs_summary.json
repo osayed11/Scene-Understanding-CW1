@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "archive": "da3_full_inputs.zip",
+  "prefix": "cw1_da3_full",
+  "bytes": 3015938535,
+  "sha256": "2f168fad787de3fb03f7f9b0312b267d8a2aff0f40f82e7a4869868101f7e9f5",
+  "frame_counts": {
+    "kitti06": 1101,
+    "tum_fr3": 2585,
+    "replica_room0": 2000
+  },
+  "total_frames": 5686,
+  "rgb_bytes": 3014221835,
+  "input_identity_sha256": "6ba22b5017b2b98327fc53154f3d0a8398518d71b27392c25eee07e30322d25b",
+  "uncompressed_npy_pixel_bytes": 11702190480,
+  "uncompressed_npy_bytes": 11702918288,
+  "npy_size_note": "float32 HxW arrays with 128-byte NPY v1 headers; excludes optional PNGs",
+  "archive_members": 5706
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "benchmark_kind": "three_adjacent_frame_smoke_test",
+  "sequence": "replica_room0",
+  "notes": [
+    "Three adjacent frames are not a full depth-quality or speed benchmark.",
+    "Inference timing includes infer_image preprocessing and resizing, excludes image file reads, GT scoring and model setup.",
+    "No network warmup; first-frame cold timing and mean of last two frames are both retained.",
+    "Hypersim indoor metric checkpoint with matching max_depth=20 metres; no GT used for model inference."
+  ],
+  "source": {
+    "repository": "https://github.com/DepthAnything/Depth-Anything-V2",
+    "commit": "a561b849ebae10a6f5ef49e26c83cbbcd36c71bf"
+  },
+  "checkpoint": {
+    "path": "/mnt/c/Users/adria/University/Awareness/Scene-Understanding-CW1/weights/Depth-Anything-V2/metric_depth/checkpoints/depth_anything_v2_metric_hypersim_vitb.pth",
+    "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Hypersim-Base/resolve/main/depth_anything_v2_metric_hypersim_vitb.pth",
+    "bytes": 389965138,
+    "sha256": "9dc9e274c5eff55c6daf27b660c0ced0eca4e8593a6da90cdcb04d2b4d3f3fa2"
+  },
+  "model": {
+    "encoder": "vitb",
+    "features": 128,
+    "out_channels": [
+      96,
+      192,
+      384,
+      768
+    ],
+    "max_depth_m": 20,
+    "input_size": 518,
+    "parameters": 97470785
+  },
+  "runtime": {
+    "device": "cpu",
+    "precision": "float32",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu",
+    "numpy": "1.26.4",
+    "opencv": "4.10.0",
+    "python": "3.10.12",
+    "cpu": "Intel Core i5-13420H",
+    "torch_num_threads": 6,
+    "torch_num_interop_threads": 6,
+    "model_setup_seconds": 4.730261590999362
+  },
+  "gt_depth_factor": 6553.5,
+  "frames": [
+    {
+      "index": 0,
+      "timestamp": 0.0,
+      "rgb": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/frame000000.jpg",
+      "depth_gt": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/depth000000.png",
+      "input_shape_nchw": [
+        1,
+        3,
+        518,
+        910
+      ],
+      "output_shape_hw": [
+        680,
+        1200
+      ],
+      "inference_seconds": 4.906715732000521,
+      "raw": {
+        "valid_gt_pixels": 815998,
+        "valid_pixels": 815998,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.3325786714142597,
+        "rmse_m": 0.8213103592322658,
+        "delta1": 0.21950666545751338,
+        "scale": 1.0
+      },
+      "median_scaled": {
+        "valid_gt_pixels": 815998,
+        "valid_pixels": 815998,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.06433802500301324,
+        "rmse_m": 0.17186633160418122,
+        "delta1": 0.9988688697766416,
+        "scale": 0.7692254523113569
+      }
+    },
+    {
+      "index": 1,
+      "timestamp": 0.04,
+      "rgb": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/frame000001.jpg",
+      "depth_gt": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/depth000001.png",
+      "input_shape_nchw": [
+        1,
+        3,
+        518,
+        910
+      ],
+      "output_shape_hw": [
+        680,
+        1200
+      ],
+      "inference_seconds": 4.526261214000442,
+      "raw": {
+        "valid_gt_pixels": 815996,
+        "valid_pixels": 815996,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.30946085295819936,
+        "rmse_m": 0.7859244959410122,
+        "delta1": 0.28176118510384857,
+        "scale": 1.0
+      },
+      "median_scaled": {
+        "valid_gt_pixels": 815996,
+        "valid_pixels": 815996,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.053456857728152986,
+        "rmse_m": 0.14487167002076778,
+        "delta1": 0.9991139662449325,
+        "scale": 0.780157329756583
+      }
+    },
+    {
+      "index": 2,
+      "timestamp": 0.08,
+      "rgb": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/frame000002.jpg",
+      "depth_gt": "/mnt/c/Users/adria/University/Awareness/data/replica/room0/results/depth000002.png",
+      "input_shape_nchw": [
+        1,
+        3,
+        518,
+        910
+      ],
+      "output_shape_hw": [
+        680,
+        1200
+      ],
+      "inference_seconds": 4.424412763999499,
+      "raw": {
+        "valid_gt_pixels": 816000,
+        "valid_pixels": 816000,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.30171878025129817,
+        "rmse_m": 0.7700227149006212,
+        "delta1": 0.3468541666666667,
+        "scale": 1.0
+      },
+      "median_scaled": {
+        "valid_gt_pixels": 816000,
+        "valid_pixels": 816000,
+        "prediction_coverage": 1.0,
+        "abs_rel": 0.05183409875516351,
+        "rmse_m": 0.1424946887614882,
+        "delta1": 0.9990539215686275,
+        "scale": 0.7836573481493456
+      }
+    }
+  ],
+  "summary": {
+    "mean_inference_seconds": 4.619129903333487,
+    "median_inference_seconds": 4.526261214000442,
+    "mean_last_two_inference_seconds": 4.47533698899997,
+    "raw_mean_abs_rel": 0.3145861015412524,
+    "raw_mean_rmse_m": 0.7924191900246331,
+    "raw_mean_delta1": 0.28270733907600953,
+    "median_scaled_mean_abs_rel": 0.05654299382877658,
+    "median_scaled_mean_rmse_m": 0.15307756346214574,
+    "median_scaled_mean_delta1": 0.9990122525300672
+  }
+}

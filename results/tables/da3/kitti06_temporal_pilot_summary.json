@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "sequence": "kitti06",
+  "analysis": "motion-compensated adjacent-frame temporal consistency pilot",
+  "created_utc": "2026-11-02T01:54:37.973863+00:00",
+  "prediction_root": "depth_maps/da3_metric_large_cpu_float32",
+  "model_signature": {
+    "model": "da3_metric_large",
+    "model_variant": "da3metric-large",
+    "checkpoint": {
+      "kind": "directory",
+      "sha256": "5781f20d6350eefc8e672652a3e75bac46b1f7c26bbc2e662bfb51b6d31e414d",
+      "files": {
+        "config.json": {
+          "sha256": "a336f3e76fe375aaae17a9aed9130c9f2aa061535d317ec57dcb2f1f02e1dd53",
+          "bytes": 847
+        },
+        "model.safetensors": {
+          "sha256": "bbea5b0b3ee389849cffa7ddae89de064a90abd2b055fc5aa99aac68db324776",
+          "bytes": 1336734448
+        }
+      }
+    },
+    "source_commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+    "source_files_sha256": "4047206e0da3505e4df5007c57f8ec4349b297803d7a71a1d852ae6cd017871d",
+    "adapter_sha256": "6c47058ce23bb694b2a2ff506e8ea6a759e87981d0e152c196a11c4ca0d6e1c3",
+    "device": "cpu",
+    "precision": "float32",
+    "process_res": 504,
+    "process_res_method": "upper_bound_resize",
+    "input_color": "RGB",
+    "metric_conversion": "canonical_depth * mean(processed_fx, processed_fy) / 300",
+    "native_output_interpolation": "bilinear_after_metric_conversion",
+    "parameter_count": 334171394,
+    "precision_policy": "float32_no_autocast",
+    "calibration_source": "official_input_processor_returned_intrinsics",
+    "depth_factor": 256.0,
+    "png_overflow": "invalid",
+    "camera": {
+      "fx": 707.0912,
+      "fy": 707.0912,
+      "cx": 601.8873,
+      "cy": 183.1104,
+      "width": 1226,
+      "height": 370,
+      "K": [
+        [
+          707.0912,
+          0.0,
+          601.8873
+        ],
+        [
+          0.0,
+          707.0912,
+          183.1104
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "input_size": [
+      370,
+      1226
+    ],
+    "rgb_source_root": "data",
+    "full_frame_inventory_sha256": "db35e5345444bca1d7834476e52747ab566002acb08091b9d6d6e8577c49c451"
+  },
+  "prediction_manifest_sha256": "5d20911d3bd9eb82ebc9bac9b22ce4d3c84aced12dd052c591019cf615261f8f",
+  "sample_definition": {
+    "requested_pairs": 25,
+    "source_index_rule": "numpy.rint(numpy.linspace(0, number_of_frames-2, 25)).astype(int)",
+    "source_indices": [
+      0,
+      46,
+      92,
+      137,
+      183,
+      229,
+      275,
+      321,
+      366,
+      412,
+      458,
+      504,
+      550,
+      595,
+      641,
+      687,
+      733,
+      778,
+      824,
+      870,
+      916,
+      962,
+      1007,
+      1053,
+      1099
+    ],
+    "target_indices": [
+      1,
+      47,
+      93,
+      138,
+      184,
+      230,
+      276,
+      322,
+      367,
+      413,
+      459,
+      505,
+      551,
+      596,
+      642,
+      688,
+      734,
+      779,
+      825,
+      871,
+      917,
+      963,
+      1008,
+      1054,
+      1100
+    ],
+    "frame_interval": 1,
+    "pixel_stride": 16,
+    "pixel_grid": "u=0,16,...; v=0,16,... at native resolution; no semantic masking",
+    "camera": {
+      "width": 1226,
+      "height": 370,
+      "K": [
+        [
+          707.0912,
+          0.0,
+          601.8873
+        ],
+        [
+          0.0,
+          707.0912,
+          183.1104
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "occlusion_abs_tolerance_m": 0.05,
+    "occlusion_rel_tolerance": 0.05
+  },
+  "pose_validation": {
+    "format": "groundtruth.txt first 8 columns: t, tx, ty, tz, qx, qy, qz, qw; trailing ninth column ignored",
+    "convention": "camera-to-world; verified numerically against supplied KITTI 06.txt 3x4 poses",
+    "raw_pose_count": 1101,
+    "finite_loaded_pose_count": 1101,
+    "max_absolute_matrix_difference": 7.480795338743462e-08,
+    "max_absolute_translation_difference_m": 2.220446e-16,
+    "rgb_pose_extrinsic_note": "Uses provided pose stream directly; no separate camera-0 to colour-camera extrinsic correction is supplied/applied."
+  },
+  "pair_status_counts": {
+    "ok": 25
+  },
+  "coverage_counts": {
+    "n_sampled": 46200,
+    "n_source_valid": 46200,
+    "n_source_geometry_valid": 46200,
+    "n_source_geometry_invalid": 0,
+    "n_projected": 35190,
+    "n_zbuffer_occluded": 5,
+    "n_visibility_invalid": 0,
+    "n_visibility_occluded": 5068,
+    "n_source_prediction_invalid": 0,
+    "n_target_invalid": 0,
+    "n_compared": 30117,
+    "n_out_of_view_or_behind_camera": 11010
+  },
+  "coverage_fractions": {
+    "retained_of_sampled": 0.6518831168831168,
+    "retained_of_source_geometry_valid": 0.6518831168831168,
+    "retained_of_projected": 0.8558397271952259,
+    "out_of_view_or_behind_camera_of_sampled": 0.2383116883116883
+  },
+  "conditional_macro_statistics": {
+    "mean_pair_median_abs_m": 0.5098706376634587,
+    "median_pair_median_abs_m": 0.4488174518068204,
+    "mean_pair_p90_abs_m": 3.509398614059521,
+    "median_pair_p90_abs_m": 2.7779192165154036,
+    "mean_pair_rmse_m": 4.679040221742805,
+    "median_pair_rmse_m": 4.314065347702962,
+    "mean_pair_median_rel": 0.025804714780383983,
+    "median_pair_median_rel": 0.024766962855198544,
+    "mean_pair_p90_rel": 0.08000703216680424,
+    "median_pair_p90_rel": 0.06448840329961691,
+    "mean_pair_mean_signed_m": 1.3138293662474774,
+    "median_pair_mean_signed_m": 1.1534244673831742
+  },
+  "pair_metric_ranges": {
+    "median_abs_m": {
+      "min": 0.14998600925691186,
+      "max": 1.3151703159466237
+    },
+    "p90_abs_m": {
+      "min": 1.2478802064031693,
+      "max": 13.57518845150409
+    },
+    "median_rel": {
+      "min": 0.012103425118997879,
+      "max": 0.04659470621894279
+    },
+    "p90_rel": {
+      "min": 0.042252746696576436,
+      "max": 0.21046824836046377
+    }
+  },
+  "selection_labels": {
+    "source_geometry_mode": "source_prediction",
+    "visibility_mode": "target_prediction_and_source_zbuffer",
+    "selection_is_prediction_dependent": true
+  },
+  "interpretation": [
+    "These are conditional self-consistency residuals after compensating with evaluation-only reference camera motion, not ground-truth depth errors.",
+    "Macro statistics give each successful pair equal weight; mean_pair_p90 is the mean of per-pair 90th percentiles, not a pooled pixel percentile.",
+    "KITTI provides no depth GT here. This diagnostic cannot establish absolute depth accuracy, learned metric-scale correctness, map quality, or SLAM performance.",
+    "Source predictions determine correspondence geometry and the source z-buffer; target predictions determine visibility. This network-dependent rejection can conceal disagreement.",
+    "The rigid-scene camera-motion assumption fails for moving cars and other independently moving objects.",
+    "Sky has no finite static surface depth; large smooth sky predictions can inflate apparent relative consistency. No sky/car segmentation is available or applied.",
+    "The stride-16 source grid and one-way adjacent pairs underrepresent thin structures, boundary occlusions, and longer-term flicker.",
+    "Uses supplied calibrated pinhole pixels/pose stream directly; camera-to-pose extrinsic or video timing mismatch would also contribute to residuals."
+  ],
+  "execution": {
+    "new_network_inference": false,
+    "math_threads_requested": 1,
+    "niceness": 10,
+    "npy_bytes_read": 90730400,
+    "elapsed_seconds": 5.800236604001839
+  }
+}
