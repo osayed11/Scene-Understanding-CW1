@@ -35,7 +35,9 @@ make test
 | Depth maps for every frame (reused by all later parts) | `make depth_maps` | `depth_maps/<seq>/` |
 | Table 2: depth quality, temporal consistency, keypoint depth + uncertainty + scale | `make table2` | `results/tables/table2_*.csv` |
 | Table 3: pseudo RGB-D, method A, method B, trust sweeps | `make table3` | `results/tables/table3_*.csv` |
-| Table 4: agreement, frame choice, failure case, own sequence | `make table4` | `results/tables/table4_*.csv` |
+| Table 4a: triangulated vs learned depth of the map points (all sequences), map scale from the learned depth alone, by parallax / distance / image position | `python scripts/part4/map_vs_learned.py` | `results/tables/table4_agreement*.csv`; per observation `results/logs/<run_id>/map/obs_learned.csv.gz`; Part 2's `--map-samples` input `results/logs/<run_id>/map/map_samples.npz` |
+| Table 4b: agreement of a point's learned depth across the keyframes which observe it; fused vs single learned depth; the cost of dropping inconsistent points | `python scripts/part4/keyframe_consistency.py` (after 4a) | `results/tables/table4_consistency*.csv`; per point `results/logs/<run_id>/map/points_consistency.csv.gz` |
+| Table 4: frame choice, failure case, own sequence | `make table4` | `results/tables/table4_*.csv` |
 | Submission zip (code, results, report) | `make submission` | `submission/` |
 
 Each run appends one row to `results/results.csv` via `scripts/measure_run.py` and saves its trajectory to
